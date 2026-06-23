@@ -1,0 +1,456 @@
+/* =====================================================================
+   The Burrows of Penrose — site stylesheet
+   Shared across the main pages and the area guides.
+   Site chrome is namespaced .site-* so it never collides with the
+   guide-internal classes (.header, .section, .card, .footer).
+   ===================================================================== */
+
+:root {
+  --paper:    #fbf9f5;  /* warm off-white base            */
+  --oat:      #efeae0;  /* soft section tint              */
+  --sand:     #e4ddcf;  /* deeper neutral / borders       */
+  --eucalypt: #5a6b52;  /* muted sage-green — brand        */
+  --eucalypt-deep: #44513d;
+  --bark:     #3a3128;  /* warm near-black text           */
+  --stone:    #6f685c;  /* secondary text                 */
+  --amber:    #c4872a;  /* accent / booking (from guides) */
+  --amber-deep: #a06d1f;
+}
+
+/* ---------- base (main pages; guides override via their own inline <style>) */
+.page * { margin: 0; padding: 0; box-sizing: border-box; }
+
+.page {
+  background: var(--paper);
+  color: var(--bark);
+  font-family: 'Libre Baskerville', Georgia, serif;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page img { display: block; max-width: 100%; }
+
+.page a { color: var(--eucalypt-deep); text-decoration: none; }
+.page a:hover { color: var(--amber-deep); }
+
+.eyebrow {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--eucalypt);
+  font-weight: 600;
+}
+
+/* =====================================================================
+   SITE NAV  (sticky frosted bar — works over photos and guide headers)
+   ===================================================================== */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem clamp(1.1rem, 4vw, 3rem);
+  background: rgba(251, 249, 245, 0.86);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(58, 49, 40, 0.08);
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.site-nav__brand {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.12rem;
+  letter-spacing: 0.04em;
+  color: var(--bark);
+  white-space: nowrap;
+}
+.site-nav__brand:hover { color: var(--bark); }
+.site-nav__brand b { font-weight: 600; }
+
+.site-nav__links {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2.5vw, 2.1rem);
+  list-style: none;
+}
+.site-nav__links a {
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--stone);
+  padding: 0.3rem 0;
+  position: relative;
+}
+.site-nav__links a:hover { color: var(--bark); }
+.site-nav__links a.is-active { color: var(--bark); }
+.site-nav__links a.is-active::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 1px;
+  background: var(--amber);
+}
+
+.site-nav__book {
+  font-size: 0.72rem !important;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fff !important;
+  background: var(--eucalypt);
+  padding: 0.55rem 1.1rem !important;
+  border-radius: 2px;
+  transition: background 0.2s ease;
+}
+.site-nav__book:hover { background: var(--eucalypt-deep); color:#fff !important; }
+.site-nav__book::after { display:none !important; }
+
+.site-nav__toggle {
+  display: none;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  width: 28px; height: 22px;
+  position: relative;
+}
+.site-nav__toggle span {
+  position: absolute; left: 0; right: 0; height: 1.5px;
+  background: var(--bark); transition: transform .25s ease, opacity .25s ease;
+}
+.site-nav__toggle span:nth-child(1){ top: 2px; }
+.site-nav__toggle span:nth-child(2){ top: 10px; }
+.site-nav__toggle span:nth-child(3){ top: 18px; }
+
+@media (max-width: 820px) {
+  .site-nav__toggle { display: block; }
+  .site-nav__links {
+    position: fixed;
+    inset: 56px 0 auto 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--sand);
+    padding: 0.5rem clamp(1.1rem, 4vw, 3rem) 1.2rem;
+    transform: translateY(-130%);
+    transition: transform 0.3s ease;
+    box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+  }
+  .site-nav.is-open .site-nav__links { transform: translateY(0); }
+  .site-nav__links li { width: 100%; }
+  .site-nav__links a { display: block; padding: 0.85rem 0; font-size: 0.82rem; }
+  .site-nav__links a.is-active::after { display: none; }
+  .site-nav__book { margin-top: 0.6rem; display: inline-block; }
+  .site-nav.is-open .site-nav__toggle span:nth-child(1){ transform: translateY(8px) rotate(45deg); }
+  .site-nav.is-open .site-nav__toggle span:nth-child(2){ opacity: 0; }
+  .site-nav.is-open .site-nav__toggle span:nth-child(3){ transform: translateY(-8px) rotate(-45deg); }
+}
+
+/* =====================================================================
+   LAYOUT HELPERS
+   ===================================================================== */
+.wrap { max-width: 1160px; margin: 0 auto; padding: 0 clamp(1.1rem, 4vw, 2rem); }
+.wrap--narrow { max-width: 780px; }
+
+.section-pad { padding: clamp(3.5rem, 8vw, 6.5rem) 0; }
+.section-pad--sm { padding: clamp(2.5rem, 5vw, 4rem) 0; }
+.tint { background: var(--oat); }
+
+.h-display {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: 0.01em;
+  color: var(--bark);
+}
+.lede { font-size: 1.08rem; color: var(--stone); line-height: 1.85; }
+
+/* =====================================================================
+   HERO (home)
+   ===================================================================== */
+.hero {
+  position: relative;
+  min-height: clamp(78vh, 80vh, 860px);
+  display: flex;
+  align-items: flex-end;
+  color: #fff;
+  overflow: hidden;
+}
+.hero__img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover;
+  z-index: -2;
+}
+.hero::after {
+  content: '';
+  position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(180deg, rgba(40,40,35,0.28) 0%, rgba(30,32,26,0.10) 38%, rgba(30,32,26,0.62) 100%);
+}
+.hero__inner { padding: 0 0 clamp(2.5rem, 6vw, 4.5rem); }
+.hero .eyebrow { color: rgba(255,255,255,0.82); }
+.hero h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(2.6rem, 7vw, 5.2rem);
+  line-height: 1.05;
+  margin: 0.6rem 0 0.5rem;
+  text-shadow: 0 2px 30px rgba(0,0,0,0.25);
+}
+.hero h1 em { font-style: italic; }
+.hero__sub {
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  max-width: 36ch;
+  color: rgba(255,255,255,0.92);
+  margin-bottom: 1.6rem;
+}
+
+/* =====================================================================
+   BUTTONS
+   ===================================================================== */
+.btn {
+  display: inline-block;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.95rem 1.9rem;
+  border-radius: 2px;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.btn--primary { background: var(--amber); color: #fff; }
+.btn--primary:hover { background: var(--amber-deep); color: #fff; }
+.btn--ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,0.55); }
+.btn--ghost:hover { background: rgba(255,255,255,0.12); color: #fff; }
+.btn--dark { background: var(--eucalypt); color: #fff; }
+.btn--dark:hover { background: var(--eucalypt-deep); color: #fff; }
+
+/* =====================================================================
+   SPLIT (image + text)
+   ===================================================================== */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.5rem, 5vw, 4rem);
+  align-items: center;
+}
+.split--flip .split__media { order: 2; }
+.split__media img { width: 100%; height: 100%; object-fit: cover; border-radius: 2px; aspect-ratio: 4/3; }
+.split h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 1rem; }
+.split p { color: var(--stone); margin-bottom: 1rem; }
+@media (max-width: 760px) {
+  .split { grid-template-columns: 1fr; }
+  .split--flip .split__media { order: 0; }
+}
+
+/* =====================================================================
+   FEATURE GRID (what guests love)
+   ===================================================================== */
+.section-label {
+  text-align: center;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+.section-label h2 {
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  margin-top: 0.5rem;
+}
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: clamp(1.2rem, 3vw, 2.2rem);
+}
+.feature { text-align: left; }
+.feature__icon {
+  width: 38px; height: 38px; margin-bottom: 0.9rem;
+  color: var(--eucalypt);
+}
+.feature h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  font-size: 1.18rem;
+  margin-bottom: 0.4rem;
+}
+.feature p { color: var(--stone); font-size: 0.92rem; }
+
+/* quick facts strip */
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(1.5rem, 5vw, 4rem);
+  text-align: center;
+}
+.fact .n {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--eucalypt);
+  display: block;
+  line-height: 1;
+}
+.fact .l {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.66rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-top: 0.5rem;
+}
+
+/* =====================================================================
+   FULL-BLEED IMAGE BAND
+   ===================================================================== */
+.band {
+  position: relative;
+  height: clamp(320px, 48vw, 560px);
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; color: #fff; overflow: hidden;
+}
+.band img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.band::after { content:''; position:absolute; inset:0; z-index:-1; background: rgba(35,37,30,0.42); }
+.band__quote {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.4rem, 3.5vw, 2.3rem);
+  max-width: 24ch;
+  line-height: 1.35;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.3);
+}
+
+/* =====================================================================
+   AREA GUIDE CARDS (links to the four guides)
+   ===================================================================== */
+.guide-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: clamp(1rem, 2.5vw, 1.6rem);
+}
+.guide-card {
+  display: block;
+  border-radius: 2px;
+  overflow: hidden;
+  color: #fff;
+  min-height: 230px;
+  position: relative;
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.guide-card:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(0,0,0,0.16); color:#fff; }
+.guide-card::after {
+  content:''; position:absolute; inset:0; z-index:0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.45));
+}
+.guide-card > * { position: relative; z-index: 1; }
+.guide-card.gc-events   { background: #2d4a2a; }
+.guide-card.gc-food     { background: #5e2233; }
+.guide-card.gc-nature   { background: #1e3a2f; }
+.guide-card.gc-wildlife { background: #4a3520; }
+.guide-card .gc-eyebrow {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+  opacity: 0.7; margin-bottom: 0.4rem;
+}
+.guide-card h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600; font-size: 1.4rem; line-height: 1.15; margin-bottom: 0.4rem;
+}
+.guide-card p { font-size: 0.85rem; opacity: 0.9; }
+.guide-card .gc-go {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+  margin-top: 0.9rem;
+}
+
+/* =====================================================================
+   GALLERY
+   ===================================================================== */
+.gallery-grid {
+  columns: 3 280px;
+  column-gap: 14px;
+}
+.gallery-grid figure { break-inside: avoid; margin: 0 0 14px; }
+.gallery-grid img {
+  width: 100%; border-radius: 2px;
+  transition: filter 0.25s ease, transform 0.25s ease;
+}
+.gallery-grid img:hover { filter: brightness(1.04); }
+
+/* =====================================================================
+   BOOKING CALL-TO-ACTION
+   ===================================================================== */
+.cta {
+  text-align: center;
+  background: var(--eucalypt-deep);
+  color: #fff;
+}
+.cta h2 { font-size: clamp(2rem, 5vw, 3rem); color: #fff; margin-bottom: 0.8rem; }
+.cta p { color: rgba(255,255,255,0.85); max-width: 50ch; margin: 0 auto 1.8rem; }
+.cta .eyebrow { color: rgba(255,255,255,0.7); }
+
+/* fast-facts list (about / book) */
+.deflist { list-style: none; }
+.deflist li {
+  display: flex; justify-content: space-between; gap: 1rem;
+  padding: 0.7rem 0; border-bottom: 1px solid var(--sand);
+  font-size: 0.95rem;
+}
+.deflist li span:first-child { color: var(--stone); font-family:'Josefin Sans',sans-serif; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; }
+.deflist li span:last-child { text-align: right; }
+
+/* =====================================================================
+   SITE FOOTER
+   ===================================================================== */
+.site-footer {
+  background: var(--bark);
+  color: rgba(255,255,255,0.72);
+  font-family: 'Libre Baskerville', Georgia, serif;
+  padding: clamp(2.5rem, 5vw, 4rem) 0 2rem;
+}
+.site-footer a { color: rgba(255,255,255,0.78); }
+.site-footer a:hover { color: #fff; }
+.site-footer__grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+.site-footer__brand {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.4rem; color: #fff; margin-bottom: 0.6rem;
+}
+.site-footer__brand + p { font-size: 0.9rem; max-width: 34ch; }
+.site-footer h4 {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(255,255,255,0.5); margin-bottom: 0.9rem; font-weight: 600;
+}
+.site-footer ul { list-style: none; }
+.site-footer li { margin-bottom: 0.5rem; font-size: 0.9rem; }
+.site-footer__base {
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding-top: 1.4rem;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+}
+@media (max-width: 700px) {
+  .site-footer__grid { grid-template-columns: 1fr; gap: 1.6rem; }
+}
+
+/* accessibility */
+.page :focus-visible,
+.site-nav :focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; border-radius: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+/* scroll reveal — visible by default (no-JS safe); animates only when JS is on */
+.reveal { opacity: 1; transform: none; }
+.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.js .reveal.in { opacity: 1; transform: none; }

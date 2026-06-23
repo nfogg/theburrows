@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lookouts, Walks &amp; Wild Places — Southern Highlands Guide · The Burrows of Penrose</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Libre+Baskerville:ital@0;1&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/site.css">
+<style>
+  :root {
+    --ink: #1a1410;
+    --parchment: #f5f0e8;
+    --cream: #faf7f2;
+    --pine: #1e3a2f;
+    --moss: #5a7a3a;
+    --amber: #c4872a;
+    --rust: #8b3a2a;
+    --slate: #4a5568;
+    --mist: #e8e4dc;
+    --water: #3a6b6b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Libre Baskerville', Georgia, serif;
+    line-height: 1.6;
+  }
+
+  .header {
+    background: var(--pine);
+    color: var(--parchment);
+    text-align: center;
+    padding: 3rem 2rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 60%, rgba(90,122,58,0.35) 0%, transparent 60%),
+      radial-gradient(ellipse at 85% 40%, rgba(58,107,107,0.3) 0%, transparent 60%);
+  }
+
+  .header-inner { position: relative; z-index: 1; }
+
+  .header-eyebrow {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.6);
+    margin-bottom: 0.75rem;
+  }
+
+  .header h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 1.15;
+  }
+
+  .header h1 em { font-style: italic; color: #a8c89a; }
+
+  .header-sub {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.55);
+    margin-top: 1rem;
+  }
+
+  .header-rule {
+    width: 60px;
+    height: 1px;
+    background: rgba(168,200,154,0.5);
+    margin: 1.25rem auto 0;
+  }
+
+  .intro {
+    max-width: 720px;
+    margin: 2.5rem auto;
+    padding: 0 2rem;
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--slate);
+    font-style: italic;
+    line-height: 1.8;
+  }
+
+  /* Park notes box */
+  .notes {
+    max-width: 900px;
+    margin: 0 auto 1rem;
+    padding: 0 1.5rem;
+  }
+
+  .notes-card {
+    background: #f0ede5;
+    border-left: 3px solid var(--moss);
+    padding: 1.1rem 1.4rem;
+    font-size: 0.8rem;
+    color: var(--slate);
+    line-height: 1.7;
+  }
+
+  .notes-card strong {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--pine);
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  .section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin: 3rem 0 1.5rem;
+  }
+
+  .section-head h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--pine);
+    white-space: nowrap;
+  }
+
+  .section-head .line { flex: 1; height: 1px; background: var(--mist); }
+
+  .section-head .count {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #aaa;
+  }
+
+  .section-intro {
+    font-size: 0.88rem;
+    color: var(--slate);
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    max-width: 760px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .card {
+    background: white;
+    border: 1px solid var(--mist);
+    border-radius: 2px;
+    padding: 1.4rem 1.5rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    position: relative;
+  }
+
+  .card:hover { box-shadow: 0 5px 18px rgba(0,0,0,0.1); transform: translateY(-2px); }
+
+  .card.close {
+    border: 1px solid var(--moss);
+    background: linear-gradient(180deg, #f8fbf6 0%, white 100%);
+  }
+
+  .close-badge {
+    position: absolute;
+    top: -9px;
+    right: 14px;
+    background: var(--moss);
+    color: white;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+  }
+
+  .card-name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.25;
+    margin-bottom: 0.2rem;
+  }
+
+  .card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .pill {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.5rem;
+    border-radius: 2px;
+    background: var(--mist);
+    color: var(--slate);
+  }
+
+  .pill.dist { background: #e6efe3; color: var(--moss); }
+  .pill.easy { background: #e3eee3; color: #3a7a3a; }
+  .pill.mod  { background: #f3ecd9; color: #a37520; }
+  .pill.hard { background: #f3e0da; color: var(--rust); }
+
+  .card-desc {
+    font-size: 0.82rem;
+    color: var(--slate);
+    line-height: 1.6;
+  }
+
+  .card-tip {
+    font-size: 0.78rem;
+    color: var(--ink);
+    margin-top: 0.7rem;
+    padding-top: 0.7rem;
+    border-top: 1px dotted var(--mist);
+    font-style: italic;
+  }
+
+  .card-tip strong {
+    font-family: 'Josefin Sans', sans-serif;
+    font-style: normal;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--moss);
+    display: block;
+    margin-bottom: 0.15rem;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 3rem 2rem 2rem;
+    margin-top: 3rem;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #aaa;
+    border-top: 1px solid var(--mist);
+  }
+
+  @media (max-width: 600px) {
+    .grid { grid-template-columns: 1fr; }
+    .section-head h2 { font-size: 1.4rem; }
+  }
+
+  @media print {
+    body { background: white; }
+    .card { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav" aria-label="Primary">
+  <a class="site-nav__brand" href="../index.html">The Burrows <b>of Penrose</b></a>
+  <button class="site-nav__toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <ul class="site-nav__links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../about.html">The Homestead</a></li>
+    <li><a href="../gallery.html">Gallery</a></li>
+    <li><a href="../area.html">The Area</a></li>
+    <li><a href="../book.html">Stay</a></li>
+    <li><a class="site-nav__book" href="https://www.airbnb.com.au/" target="_blank" rel="noopener">Book on Airbnb</a></li>
+  </ul>
+</nav>
+<!-- guide sub-nav: move between the four area guides -->
+<div style="background:var(--oat,#efeae0);border-bottom:1px solid rgba(58,49,40,.08);font-family:'Josefin Sans',sans-serif;">
+  <div style="max-width:1100px;margin:0 auto;padding:.6rem clamp(1rem,4vw,1.5rem);display:flex;gap:1.2rem;flex-wrap:wrap;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;">
+    <span style="color:#9a9384;">Area guides:</span>
+    <a href="events.html" style="color:#6f685c;text-decoration:none;">Events</a>
+    <a href="food-and-drink.html" style="color:#6f685c;text-decoration:none;">Wineries &amp; Tables</a>
+    <a href="nature.html" style="color:#3a3128;text-decoration:none;border-bottom:1px solid #c4872a;">Walks &amp; Lookouts</a>
+    <a href="wildlife.html" style="color:#6f685c;text-decoration:none;">Wildlife</a>
+  </div>
+</div>
+
+
+<header class="header">
+  <div class="header-inner">
+    <div class="header-eyebrow">The Burrows of Penrose · Guest Guide</div>
+    <h1>Lookouts, Walks<br><em>&amp; Wild Places</em></h1>
+    <div class="header-rule"></div>
+    <div class="header-sub">Morton National Park · Waterfalls · Escarpment Lookouts · Bush Trails</div>
+  </div>
+</header>
+
+<p class="intro">
+  You're staying in one of the most beautiful wilderness pockets in NSW. Within a short drive lie
+  dramatic escarpment lookouts, plunging waterfalls, fern-filled glens and the famous Glow Worm Glen.
+  Here are our favourite walks and natural wonders — from gentle 15-minute strolls to challenging
+  full-day descents into the gorges.
+</p>
+
+<div class="notes">
+  <div class="notes-card">
+    <strong>Before you set out</strong>
+    Morton National Park is managed by NSW National Parks. Park entry fees apply: around $8 per
+    vehicle per day in the Bundanoon area, and a smaller fee at Fitzroy Falls (machines take cash
+    and card). Always carry water, sturdy shoes, sun protection and a warm layer — at 500–900m
+    elevation the Highlands can turn cold and misty quickly. Check the NSW National Parks website
+    for track closures and fire/weather alerts before heading out, as some trails close seasonally.
+  </div>
+</div>
+
+<!-- CLOSEST TO PENROSE -->
+<div class="section">
+  <div class="section-head">
+    <h2>Right on Your Doorstep</h2>
+    <span class="line"></span>
+    <span class="count">A few minutes away</span>
+  </div>
+  <p class="section-intro">
+    Some of the region's most dramatic scenery is in the southern villages closest to The Burrows —
+    Penrose, Wingello and Tallong — and these spots see far fewer visitors than the famous falls.
+  </p>
+  <div class="grid">
+
+    <div class="card close">
+      <span class="close-badge">Closest</span>
+      <div class="card-name">Badgery's Lookout</div>
+      <div class="card-meta">
+        <span class="pill dist">📍 Tallong · ~15 min</span>
+        <span class="pill easy">Lookout · easy</span>
+      </div>
+      <div class="card-desc">
+        A peaceful, panoramic lookout over the spectacular Shoalhaven gorge and the steep escarpment
+        surrounding it. The car park itself has good views and picnic tables, but the real reward is
+        down the steps at the corner to a fenced rock platform with sweeping views north and south
+        along the valley.
+      </div>
+      <div class="card-tip">
+        <strong>Our tip</strong>
+        Drive through Penrose and Wingello to Tallong, turn at the general store. A wonderful spot for
+        a picnic — bring binoculars for peregrine falcons and other birdlife. For the very fit, the
+        steep Badgery's Spur track descends to the Shoalhaven River (a serious half-day return hike).
+      </div>
+    </div>
+
+    <div class="card close">
+      <span class="close-badge">Closest</span>
+      <div class="card-name">Long Point Lookout</div>
+      <div class="card-meta">
+        <span class="pill dist">📍 Tallong · ~20 min</span>
+        <span class="pill easy">Lookout · easy</span>
+      </div>
+      <div class="card-desc">
+        Tallong's other great lookout, offering an inspiring view of the dramatic river bend in the
+        Shoalhaven gorge. An easy walking trail leads to the upper lookout; a steeper, more
+        challenging track continues down toward the river.
+      </div>
+      <div class="card-tip">
+        <strong>Our tip</strong>
+        Some say the dramatic river bend here is even better than Badgery's — see both and decide for
+        yourself. Follow Long Point Road to the very end.
+      </div>
+    </div>
+
+    <div class="card close">
+      <span class="close-badge">Closest</span>
+      <div class="card-name">Sunnataram Forest Monastery</div>
+      <div class="card-meta">
+        <span class="pill dist">📍 Bundanoon · ~10 min</span>
+        <span class="pill easy">Gardens · easy</span>
+      </div>
+      <div class="card-desc">
+        A serene Thai Buddhist forest monastery with peaceful landscaped gardens, ponds and bushland
+        paths. A tranquil, contemplative spot to wander quietly — visitors are warmly welcomed.
+      </div>
+      <div class="card-tip">
+        <strong>Our tip</strong>
+        Dress respectfully and keep noise down — it's a working monastery. A lovely calm contrast to
+        the more rugged walks nearby.
+      </div>
+    </div>
+
+    <div class="card close">
+      <span class="close-badge">Closest</span>
+      <div class="card-name">Penrose &amp; Wingello State Forests</div>
+      <div class="card-meta">
+        <span class="pill dist">📍 Penrose · on your doorstep</span>
+        <span class="pill easy">Forest tracks · easy–mod</span>
+      </div>
+      <div class="card-desc">
+        Right around the property — a mix of pine plantation and native forest, including the
+        Stingray Swamp Flora Reserve. Quiet management trails are popular for walking, mountain biking
+        and birdwatching, with the first radiata pines in the district planted nearby back in 1919.
+      </div>
+      <div class="card-tip">
+        <strong>Our tip</strong>
+        Great for an easy ride or wander straight from The Burrows. Wingello State Forest is also a
+        well-known mountain-biking hub.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- BUNDANOON / MORTON NP -->
+<div class="section">
+  <div class="section-head">
+    <h2>Bundanoon &amp; Morton National Park</h2>
+    <span class="line"></span>
+    <span class="count">The local wilderness</span>
+  </div>
+  <p class="section-intro">
+    Just up the road, Bundanoon is the gateway to a spectacular section of Morton National Park —
+    escarpment lookouts, fern glens, waterfalls, and the magical Glow Worm Glen. Many walks start
+    right from Gambells Rest or the village itself.
+  </p>
+  <div class="grid">
+
+    <div class="card close">
+      <span class="close-badge">Must-do</span>
+      <div class="card-name">Glow Worm Glen</div>
+      <div class="card-meta">
+        <span class="pill dist">📍 Bundanoon · ~10 min</span>
+        <span class="pill mod">~1 hr return · evening</span>
+      </div>
+      <div class="card-desc">
+        An absolute must-do. Hundreds of fungus-gnat larvae produce an iridescent light show in a
+        sheltered sandstone grotto — best seen at night. The walk in takes about an hour return
+        through lush bushland from the top of William Street.
+      </div>
+      <div class="card-tip">
+        <strong>Our tip</strong>
+        Best viewing is December to February. Go after dark with a torch for the walk in (then switch
+        it off at the glen), tread quietly, and let your eyes adjust. The descent track is steep — take care.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Fairy Bower Falls</div>
+      <div class="card-meta">
+        <span class="pill dist">📍 Bundanoon · ~10 min</span>
+        <span class="pill mod">~1 hr loop · moderate</span>
+      </div>
+      <div class="card-desc">
+        A gorgeous, varied loop just five minutes' drive from Bundanoon village — big boulders, rocky
+        trails, snug staircases, pretty creeks and a lookout at the top of a waterfall. A little bit
+        of everything in under an hour.
+      </div>
+      <div class="card-tip">
+        <strong>Our tip</strong>
+        Steep and rocky in parts — good for primary-school-aged kids and up. Park at the Fairy Bower
+        car park or at Gambells Rest and wander down.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Fern Glen Track</div>
+      <div class="card-meta">
+        <span class="pill dist">📍 Bundanoon · ~10 min</span>
+        <span class="pill easy">~15 min return · easy</span>
+      </div>
+      <div class="card-desc">
+        A delightful, very short walk from the Grand Canyon picnic area into a moist, rocky haven of
+        giant king ferns and moisture-loving plants. The perfect "first bushwalk" for little ones.
+      </div>
+      <div class="card-tip">
+        <strong>Our tip</strong>
+        Take your camera — the ferns are spectacular. Combine with the Grand Canyon and Cambells
+        lookouts right alongside.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Grand Canyon &amp; Fern Glen Loop</div>
+      <div class="card-meta">
+        <span class="pill dist">📍 Bundanoon · ~10 min</span>
+        <span class="pill mod">moderate</span>
+      </div>
+      <div class="card-desc">
+        Breathtaking views over Morton National Park from both the Grand Canyon and Cambells lookouts,
+        before descending into a shaded fern glen with interesting rock formations and birdsong. A
+        great option on a hot day.
+      </div>
+      <div class="card-tip">
+        <strong>Our tip</strong>
+        Starts from Bundanoon Loop Road. Cool and shaded in the gully sections.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Bundanoon Lookouts Circuit</div>
+      <div class="card-meta">
+        <span class="pill dist">📍 from Bundanoon Station</span>
+        <span class="pill mod">half day · moderate</span>
+      </div>
+      <div class="card-desc">
+        A showcase circuit starting from the station in town, packed with lookouts, picnic spots and
+        even toilets along the way — Echo Point, Bonnie View, Beauchamp Cliffs, Grand Canyon, Gambells
+        and the Glow Worm Glen lookout, all with panoramic views over the park.
+      </div>
+      <div class="card-tip">
+        <strong>Our tip</strong>
+        If you'd rather not walk far, you can drive between many of the lookouts. The circuit links
+        them all for those wanting a proper half-day on foot.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Amphitheatre Lookout (Fern Tree Gully)</div>
+      <div class="card-meta">
+        <span class="pill dist">📍 Bundanoon · ~10 min</span>
+        <span class="pill easy">~20 min return · easy</span>
+      </div>
+      <div class="card-desc">
+        Easy access to lovely views — a short walk through Fern Tree Gully to the Amphitheatre
+        lookout. Drive towards Gambells Rest, turn at Riverview Road, and you're nearly there.
+      </div>
+      <div class="card-tip">
+        <strong>Our tip</strong>
+        Quick and rewarding if you only have a spare half hour. Connects to Spooner Lookout via
+        Nicholas Pass for a longer option (check it's open first).
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- WATERFALLS -->
+<div class="section">
+  <div class="section-head">
+    <h2>The Great Waterfalls</h2>
+    <span class="line"></span>
+    <span class="count">Worth the drive</span>
+  </div>
+  <p class="section-intro">
+    The Highlands is dripping in waterfalls. These three are the headline acts, clustered near
+    Robertson and Fitzroy Falls — a perfect day's road trip with a pie-shop lunch in between. They're
+    at their thundering best after good rainfall.
+  </p>
+  <div class="grid">
+
+    <div class="card">
+      <div class="card-name">Fitzroy Falls</div>
+      <div class="card-meta">
+        <span class="pill dist">📍 Fitzroy Falls · ~30 min</span>
+        <span class="pill easy">Boardwalk + rim walks</span>
+      </div>
+      <div class="card-desc">
+        One of the most spectacular waterfalls in Australia — an 80m single drop plunging into the
+        untouched Yarrunga Valley, flowing generously year-round. A wheelchair-accessible boardwalk
+        leads to the main lookout, and the East Rim, West Rim and Wildflower tracks offer more views.
+        The award-winning Visitor Centre has a café, shop and Aboriginal cultural walks.
+      </div>
+      <div class="card-tip">
+        <strong>Our tip</strong>
+        The most accessible of the big falls — great for all ages and abilities. Listen for the
+        lyrebird's uncanny mimicry. Parking is around $4 per vehicle.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Carrington Falls</div>
+      <div class="card-meta">
+        <span class="pill dist">📍 nr Robertson · ~30 min</span>
+        <span class="pill easy">~1 km · easy</span>
+      </div>
+      <div class="card-desc">
+        Pure wow factor — a 90m drop cascading down a huge cliff into the valley below. Three lookouts
+        along an easy 1km trail give different perspectives: the first for the best overall view, the
+        second a closer look at the upper section, the third right at the top (no barriers — be cautious).
+      </div>
+      <div class="card-tip">
+        <strong>Our tip</strong>
+        Reliable year-round flow and really gushing after heavy rain. Stick to the marked lookouts —
+        the top has unfenced edges.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Belmore Falls</div>
+      <div class="card-meta">
+        <span class="pill dist">📍 nr Robertson · ~30 min</span>
+        <span class="pill mod">1.8 km return · grade 3</span>
+      </div>
+      <div class="card-desc">
+        A dramatic two-tiered waterfall tumbling into Kangaroo Valley, with sweeping Highlands views.
+        The walk starts at Hindmarsh lookout car park (itself a magnificent view) and follows the
+        escarpment to several lookouts.
+      </div>
+      <div class="card-tip">
+        <strong>Our tip</strong>
+        Access to the base is permanently closed and fines apply — enjoy it from the lookouts. The
+        approach road from Robertson is narrow, winding and unsealed, so drive carefully.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- A DAY OUT -->
+<div class="section">
+  <div class="section-head">
+    <h2>Make a Day of It</h2>
+    <span class="line"></span>
+    <span class="count">Suggested loops</span>
+  </div>
+  <div class="grid">
+
+    <div class="card">
+      <div class="card-name">The Waterfall Road Trip</div>
+      <div class="card-meta"><span class="pill mod">Full day</span></div>
+      <div class="card-desc">
+        Carrington Falls → lunch at the famous Robertson Pie Shop → Belmore Falls → Fitzroy Falls
+        and its visitor centre. Three of NSW's finest waterfalls in a single, scenic loop through the
+        green hills around Robertson.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">The Bundanoon Bushwalk Day</div>
+      <div class="card-meta"><span class="pill mod">Half to full day</span></div>
+      <div class="card-desc">
+        Fairy Bower Falls and the lookouts circuit by day, a coffee or lunch in Bundanoon village,
+        then return after dark for the Glow Worm Glen. A perfect way to experience Morton National
+        Park from your doorstep, morning to night.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">The Southern Gorges</div>
+      <div class="card-meta"><span class="pill easy">Half day</span></div>
+      <div class="card-desc">
+        Drive through Penrose and Wingello to Tallong for Badgery's and Long Point lookouts over the
+        Shoalhaven gorge — quieter, wilder and closest to home. Pack a picnic and bring binoculars.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="footer">
+  Compiled for guests of The Burrows of Penrose · Southern Highlands, NSW<br>
+  Check NSW National Parks for current track closures, fees &amp; fire alerts before setting out · nationalparks.nsw.gov.au
+</div>
+
+
+<footer class="site-footer">
+  <div class="wrap" style="max-width:1160px;margin:0 auto;padding:0 clamp(1.1rem,4vw,2rem);">
+    <div class="site-footer__grid">
+      <div>
+        <div class="site-footer__brand">The Burrows of Penrose</div>
+        <p>A private rural homestead in the Southern Highlands of New South Wales, near Bundanoon and Penrose.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="../about.html">The Homestead</a></li>
+          <li><a href="../gallery.html">Gallery</a></li>
+          <li><a href="../area.html">The Area</a></li>
+          <li><a href="../book.html">Stay &amp; Book</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Local Guides</h4>
+        <ul>
+          <li><a href="events.html">Events Calendar</a></li>
+          <li><a href="food-and-drink.html">Wineries &amp; Tables</a></li>
+          <li><a href="nature.html">Walks &amp; Lookouts</a></li>
+          <li><a href="wildlife.html">Homestead Wildlife</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__base">
+      <span>&copy; 2026 The Burrows of Penrose &middot; Southern Highlands NSW</span>
+      <span><a href="../book.html">Book your stay &rarr;</a></span>
+    </div>
+  </div>
+</footer>
+<script src="../js/site.js"></script>
+
+</body>
+</html>

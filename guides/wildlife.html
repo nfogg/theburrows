@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wildlife of the Homestead — Southern Highlands Guide · The Burrows of Penrose</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Libre+Baskerville:ital@0;1&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/site.css">
+<style>
+  :root {
+    --ink: #1a1410;
+    --parchment: #f5f0e8;
+    --cream: #faf7f2;
+    --bark: #4a3520;
+    --gum: #6b7a4a;
+    --moss: #5a7a3a;
+    --amber: #c4872a;
+    --rust: #8b3a2a;
+    --slate: #4a5568;
+    --mist: #e8e4dc;
+    --dusk: #3a4a5a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Libre Baskerville', Georgia, serif;
+    line-height: 1.6;
+  }
+
+  .header {
+    background: var(--bark);
+    color: var(--parchment);
+    text-align: center;
+    padding: 3rem 2rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 22% 55%, rgba(107,122,74,0.32) 0%, transparent 60%),
+      radial-gradient(ellipse at 82% 42%, rgba(196,135,42,0.18) 0%, transparent 60%);
+  }
+
+  .header-inner { position: relative; z-index: 1; }
+
+  .header-eyebrow {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.6);
+    margin-bottom: 0.75rem;
+  }
+
+  .header h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 1.15;
+  }
+
+  .header h1 em { font-style: italic; color: #d6c08a; }
+
+  .header-sub {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.55);
+    margin-top: 1rem;
+  }
+
+  .header-rule {
+    width: 60px;
+    height: 1px;
+    background: rgba(214,192,138,0.5);
+    margin: 1.25rem auto 0;
+  }
+
+  .intro {
+    max-width: 720px;
+    margin: 2.5rem auto;
+    padding: 0 2rem;
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--slate);
+    font-style: italic;
+    line-height: 1.8;
+  }
+
+  .notes {
+    max-width: 900px;
+    margin: 0 auto 1rem;
+    padding: 0 1.5rem;
+  }
+
+  .notes-card {
+    background: #f0ede5;
+    border-left: 3px solid var(--gum);
+    padding: 1.1rem 1.4rem;
+    font-size: 0.8rem;
+    color: var(--slate);
+    line-height: 1.7;
+  }
+
+  .notes-card strong {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--bark);
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  .section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin: 3rem 0 1.5rem;
+  }
+
+  .section-head h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--bark);
+    white-space: nowrap;
+  }
+
+  .section-head .line { flex: 1; height: 1px; background: var(--mist); }
+
+  .section-head .count {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #aaa;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .card {
+    background: white;
+    border: 1px solid var(--mist);
+    border-radius: 2px;
+    padding: 1.4rem 1.5rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    position: relative;
+  }
+
+  .card:hover { box-shadow: 0 5px 18px rgba(0,0,0,0.1); transform: translateY(-2px); }
+
+  .card.star {
+    border: 1px solid var(--amber);
+    background: linear-gradient(180deg, #fffdf8 0%, white 100%);
+  }
+
+  .star-badge {
+    position: absolute;
+    top: -9px;
+    right: 14px;
+    background: var(--amber);
+    color: white;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+  }
+
+  .card-name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 0.1rem;
+  }
+
+  .card-latin {
+    font-style: italic;
+    font-size: 0.72rem;
+    color: #999;
+    margin-bottom: 0.6rem;
+  }
+
+  .card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .pill {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.57rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.5rem;
+    border-radius: 2px;
+    background: var(--mist);
+    color: var(--slate);
+  }
+
+  .pill.time { background: #e3e8ee; color: var(--dusk); }
+  .pill.where { background: #e6efe3; color: var(--moss); }
+
+  .card-desc {
+    font-size: 0.82rem;
+    color: var(--slate);
+    line-height: 1.6;
+  }
+
+  .card-spot {
+    font-size: 0.78rem;
+    color: var(--ink);
+    margin-top: 0.7rem;
+    padding-top: 0.7rem;
+    border-top: 1px dotted var(--mist);
+    font-style: italic;
+  }
+
+  .card-spot strong {
+    font-family: 'Josefin Sans', sans-serif;
+    font-style: normal;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gum);
+    display: block;
+    margin-bottom: 0.15rem;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 3rem 2rem 2rem;
+    margin-top: 3rem;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #aaa;
+    border-top: 1px solid var(--mist);
+  }
+
+  @media (max-width: 600px) {
+    .grid { grid-template-columns: 1fr; }
+    .section-head h2 { font-size: 1.4rem; }
+  }
+
+  @media print {
+    body { background: white; }
+    .card { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav" aria-label="Primary">
+  <a class="site-nav__brand" href="../index.html">The Burrows <b>of Penrose</b></a>
+  <button class="site-nav__toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <ul class="site-nav__links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../about.html">The Homestead</a></li>
+    <li><a href="../gallery.html">Gallery</a></li>
+    <li><a href="../area.html">The Area</a></li>
+    <li><a href="../book.html">Stay</a></li>
+    <li><a class="site-nav__book" href="https://www.airbnb.com.au/" target="_blank" rel="noopener">Book on Airbnb</a></li>
+  </ul>
+</nav>
+<!-- guide sub-nav: move between the four area guides -->
+<div style="background:var(--oat,#efeae0);border-bottom:1px solid rgba(58,49,40,.08);font-family:'Josefin Sans',sans-serif;">
+  <div style="max-width:1100px;margin:0 auto;padding:.6rem clamp(1rem,4vw,1.5rem);display:flex;gap:1.2rem;flex-wrap:wrap;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;">
+    <span style="color:#9a9384;">Area guides:</span>
+    <a href="events.html" style="color:#6f685c;text-decoration:none;">Events</a>
+    <a href="food-and-drink.html" style="color:#6f685c;text-decoration:none;">Wineries &amp; Tables</a>
+    <a href="nature.html" style="color:#6f685c;text-decoration:none;">Walks &amp; Lookouts</a>
+    <a href="wildlife.html" style="color:#3a3128;text-decoration:none;border-bottom:1px solid #c4872a;">Wildlife</a>
+  </div>
+</div>
+
+
+<header class="header">
+  <div class="header-inner">
+    <div class="header-eyebrow">The Burrows of Penrose · Guest Guide</div>
+    <h1>Wildlife of<br><em>the Homestead</em></h1>
+    <div class="header-rule"></div>
+    <div class="header-sub">Who You'll Meet Around the Property &amp; Down at Paddy's River</div>
+  </div>
+</header>
+
+<p class="intro">
+  One of the great joys of staying at The Burrows is the wildlife. The property sits in a quiet
+  pocket of bush and pasture, and patient, quiet guests are often rewarded. Dawn and dusk are the
+  magic hours. Keep your voice low, move slowly, and you may share the place with kangaroos, a
+  waddling wombat, an echidna, possums in the trees and — if you're very lucky and very still —
+  a platypus in the river. Here's who you might meet.
+</p>
+
+<div class="notes">
+  <div class="notes-card">
+    <strong>A gentle word on feeding</strong>
+    Our resident magpie family is friendly and, frankly, a bit demanding around mealtimes — they're
+    wonderful company. But please resist feeding them and the other wildlife. Human food (bread,
+    mince, seed) makes native animals sick, causes dependence, and can make magpies territorial. A
+    bowl of fresh water on a hot day is the kindest thing you can offer. Enjoy them as the wild
+    neighbours they are — watching is the real reward. Please also keep a respectful distance from
+    all animals, especially mothers with young.
+  </div>
+</div>
+
+<!-- AROUND THE HOMESTEAD -->
+<div class="section">
+  <div class="section-head">
+    <h2>Around the Homestead</h2>
+    <span class="line"></span>
+    <span class="count">Paddocks, gardens &amp; trees</span>
+  </div>
+  <div class="grid">
+
+    <div class="card star">
+      <span class="star-badge">Our Regulars</span>
+      <div class="card-name">Eastern Grey Kangaroo</div>
+      <div class="card-latin">Macropus giganteus</div>
+      <div class="card-meta">
+        <span class="pill time">Dawn &amp; dusk</span>
+        <span class="pill where">Paddocks &amp; clearings</span>
+      </div>
+      <div class="card-desc">
+        Our most familiar neighbours. Soft grey-brown, they graze the paddocks in loose "mobs" in the
+        cool of early morning and evening, resting in shade through the heat of the day. Mothers often
+        carry a joey in the pouch — you may spot a head or a pair of legs poking out.
+      </div>
+      <div class="card-spot">
+        <strong>How to watch</strong>
+        Sit quietly on the verandah at dusk and let them come to you. They'll often stop grazing,
+        sit up and study you, then relax if you stay still. Give mothers and joeys plenty of room.
+      </div>
+    </div>
+
+    <div class="card star">
+      <span class="star-badge">Our Regulars</span>
+      <div class="card-name">Common Wombat</div>
+      <div class="card-latin">Vombatus ursinus</div>
+      <div class="card-meta">
+        <span class="pill time">Dusk &amp; night</span>
+        <span class="pill where">Burrows &amp; grassy edges</span>
+      </div>
+      <div class="card-desc">
+        Sturdy, low-slung and endearingly grumpy-looking, wombats are powerful diggers that shelter
+        in deep burrows by day and emerge at dusk to graze on grasses. Famously, they produce
+        cube-shaped droppings, which they use to mark territory on logs and rocks.
+      </div>
+      <div class="card-spot">
+        <strong>How to watch</strong>
+        Look for them grazing on the grassy margins after dark — a torch held low will catch them.
+        Watch for burrow entrances around the property. They're solitary and surprisingly fast if
+        startled, so admire from a distance.
+      </div>
+    </div>
+
+    <div class="card star">
+      <span class="star-badge">Our Regulars</span>
+      <div class="card-name">Short-beaked Echidna</div>
+      <div class="card-latin">Tachyglossus aculeatus</div>
+      <div class="card-meta">
+        <span class="pill time">Daytime, warm hrs</span>
+        <span class="pill where">Garden beds &amp; bush</span>
+      </div>
+      <div class="card-desc">
+        One of the world's only egg-laying mammals (a monotreme, like the platypus). Covered in
+        spines, with a long snout for snuffling out ants and termites, an echidna will curl into a
+        ball or dig down if it feels threatened. Utterly harmless and rather charming.
+      </div>
+      <div class="card-spot">
+        <strong>How to watch</strong>
+        Often seen ambling across the garden or bush on warm days, busily nosing through leaf litter.
+        Stand still and quiet and it may carry on foraging right past you. Never try to pick one up.
+      </div>
+    </div>
+
+    <div class="card star">
+      <span class="star-badge">Our Regulars</span>
+      <div class="card-name">Brushtail &amp; Ringtail Possums</div>
+      <div class="card-latin">Trichosurus / Pseudocheirus</div>
+      <div class="card-meta">
+        <span class="pill time">Night</span>
+        <span class="pill where">Trees &amp; rooflines</span>
+      </div>
+      <div class="card-desc">
+        Our nocturnal acrobats. Possums sleep in tree hollows by day and come alive after dark,
+        leaping between branches and foraging on leaves, flowers and fruit. The larger brushtail has
+        a bushy tail and can be quite vocal — those throaty hisses and clicks in the night are
+        usually them.
+      </div>
+      <div class="card-spot">
+        <strong>How to watch</strong>
+        Step outside after dark and shine a torch up into the trees — you'll often catch their eyes
+        reflecting back. Listen for rustling and the occasional dramatic territorial call.
+      </div>
+    </div>
+
+    <div class="card star">
+      <span class="star-badge">Our Regulars</span>
+      <div class="card-name">Yellow-tailed Black Cockatoo</div>
+      <div class="card-latin">Zanda funerea</div>
+      <div class="card-meta">
+        <span class="pill time">Daytime</span>
+        <span class="pill where">Overhead &amp; tall trees</span>
+      </div>
+      <div class="card-desc">
+        Among the largest of our native parrots — big, dusty-black birds with bright yellow cheek
+        patches and yellow tail panels. They travel in pairs or noisy family flocks, flying on slow,
+        lazy wingbeats. Their call is an unmistakable drawn-out, mournful <em>"kee-ow"</em>, like a
+        rusty gate, that carries a long way. They feed on seeds and prise wood-boring grubs from
+        branches, and love the pine plantations nearby.
+      </div>
+      <div class="card-spot">
+        <strong>How to watch</strong>
+        Often heard before they're seen. Folklore says they herald rain. Look for torn-open pine
+        cones and shredded branches where they've been feeding.
+      </div>
+    </div>
+
+    <div class="card star">
+      <span class="star-badge">Our Regulars</span>
+      <div class="card-name">Australian Magpie</div>
+      <div class="card-latin">Gymnorhina tibicen</div>
+      <div class="card-meta">
+        <span class="pill time">All day</span>
+        <span class="pill where">Lawns &amp; verandah</span>
+      </div>
+      <div class="card-desc">
+        Our most charismatic locals. This bold black-and-white family is friendly and clever — they
+        recognise faces and have one of the most beautiful songs in the bush: a rich, warbling
+        carol, especially at dawn. Ours are quite happy to march up demanding a snack (please don't
+        oblige — see the note above).
+      </div>
+      <div class="card-spot">
+        <strong>How to watch</strong>
+        They'll likely introduce themselves. Enjoy their carolling at first light. In spring (roughly
+        Aug–Oct) magpies can swoop to protect nests — if you walk the property then, the local
+        family knows residents and is generally relaxed, but give any swooping bird space.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- DOWN AT THE RIVER -->
+<div class="section">
+  <div class="section-head">
+    <h2>Down at Paddy's River</h2>
+    <span class="line"></span>
+    <span class="count">The special one</span>
+  </div>
+  <div class="grid">
+
+    <div class="card star">
+      <span class="star-badge">If You're Lucky</span>
+      <div class="card-name">Platypus</div>
+      <div class="card-latin">Ornithorhynchus anatinus</div>
+      <div class="card-meta">
+        <span class="pill time">Dawn &amp; dusk</span>
+        <span class="pill where">Paddy's River</span>
+      </div>
+      <div class="card-desc">
+        The most magical sighting of all, and a genuine privilege. The platypus is one of the world's
+        strangest and most wonderful animals — a duck-billed, web-footed, egg-laying mammal that
+        hunts underwater for insect larvae and small crustaceans. They're shy, mostly active at dawn
+        and dusk, and easily disturbed, so a sighting is something to treasure.
+      </div>
+      <div class="card-spot">
+        <strong>How &amp; where</strong>
+        We've seen one in Paddy's River, reached via the vacant neighbouring block past the dam.
+        Arrive before sunrise or around dusk, settle quietly on the bank well back from the water,
+        and watch the surface for tell-tale rings and ripples, then a low brown shape that dives with
+        barely a splash. Absolute stillness and silence are everything. No torches on the water, and
+        please don't enter the river or disturb the banks — this is their home.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ALSO KEEP AN EYE OUT -->
+<div class="section">
+  <div class="section-head">
+    <h2>Also Keep an Eye Out</h2>
+    <span class="line"></span>
+    <span class="count">Other locals</span>
+  </div>
+  <p class="section-intro" style="font-style:italic; color:var(--slate); font-size:0.88rem; margin-bottom:1.5rem;">
+    Beyond the regulars, the bush around Penrose is full of life. A few others you may notice during
+    your stay:
+  </p>
+  <div class="grid">
+
+    <div class="card">
+      <div class="card-name">Crimson Rosellas &amp; King Parrots</div>
+      <div class="card-meta"><span class="pill where">Trees &amp; feeders nearby</span></div>
+      <div class="card-desc">
+        Vivid splashes of crimson, blue and green flashing through the canopy. Rosellas are common
+        and confiding; the larger king parrots are quieter and especially striking.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Kookaburras</div>
+      <div class="card-meta"><span class="pill time">Dawn &amp; dusk chorus</span></div>
+      <div class="card-desc">
+        The famous laughing call ringing across the paddocks at first and last light is the
+        laughing kookaburra — Australia's largest kingfisher, and a fine hunter of insects and small
+        reptiles.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Wallabies</div>
+      <div class="card-meta"><span class="pill where">Bush edges</span></div>
+      <div class="card-desc">
+        Smaller and stockier than the kangaroos, swamp and red-necked wallabies favour the thicker
+        cover at the bush margins, bounding away if surprised.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Lyrebirds &amp; Bush Birds</div>
+      <div class="card-meta"><span class="pill where">Gullies &amp; ferny bush</span></div>
+      <div class="card-desc">
+        In the nearby gullies of Morton National Park, listen for the superb lyrebird's astonishing
+        mimicry — it can imitate other birds and even mechanical sounds with eerie accuracy.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="footer">
+  Compiled for guests of The Burrows of Penrose · Southern Highlands, NSW<br>
+  Please watch from a distance, never feed the wildlife, and leave only footprints
+</div>
+
+
+<footer class="site-footer">
+  <div class="wrap" style="max-width:1160px;margin:0 auto;padding:0 clamp(1.1rem,4vw,2rem);">
+    <div class="site-footer__grid">
+      <div>
+        <div class="site-footer__brand">The Burrows of Penrose</div>
+        <p>A private rural homestead in the Southern Highlands of New South Wales, near Bundanoon and Penrose.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="../about.html">The Homestead</a></li>
+          <li><a href="../gallery.html">Gallery</a></li>
+          <li><a href="../area.html">The Area</a></li>
+          <li><a href="../book.html">Stay &amp; Book</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Local Guides</h4>
+        <ul>
+          <li><a href="events.html">Events Calendar</a></li>
+          <li><a href="food-and-drink.html">Wineries &amp; Tables</a></li>
+          <li><a href="nature.html">Walks &amp; Lookouts</a></li>
+          <li><a href="wildlife.html">Homestead Wildlife</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__base">
+      <span>&copy; 2026 The Burrows of Penrose &middot; Southern Highlands NSW</span>
+      <span><a href="../book.html">Book your stay &rarr;</a></span>
+    </div>
+  </div>
+</footer>
+<script src="../js/site.js"></script>
+
+</body>
+</html>

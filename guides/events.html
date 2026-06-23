@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Southern Highlands Events Calendar 2026 — The Burrows of Penrose</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Libre+Baskerville:ital@0;1&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/site.css">
+<style>
+  :root {
+    --ink: #1a1410;
+    --parchment: #f5f0e8;
+    --cream: #faf7f2;
+    --forest: #2d4a2a;
+    --moss: #5a7a3a;
+    --amber: #c4872a;
+    --rust: #8b3a2a;
+    --slate: #4a5568;
+    --mist: #e8e4dc;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Libre Baskerville', Georgia, serif;
+    line-height: 1.6;
+  }
+
+  /* Header */
+  .header {
+    background: var(--forest);
+    color: var(--parchment);
+    text-align: center;
+    padding: 3rem 2rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 20% 50%, rgba(90,122,58,0.3) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 50%, rgba(196,135,42,0.15) 0%, transparent 60%);
+  }
+
+  .header-inner { position: relative; z-index: 1; }
+
+  .header-eyebrow {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.6);
+    margin-bottom: 0.75rem;
+  }
+
+  .header h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+  }
+
+  .header h1 em {
+    font-style: italic;
+    color: #c8b87a;
+  }
+
+  .header-sub {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.55);
+    margin-top: 1rem;
+  }
+
+  .header-rule {
+    width: 60px;
+    height: 1px;
+    background: rgba(200,184,122,0.5);
+    margin: 1.25rem auto 0;
+  }
+
+  /* Intro */
+  .intro {
+    max-width: 720px;
+    margin: 2.5rem auto;
+    padding: 0 2rem;
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--slate);
+    font-style: italic;
+    line-height: 1.8;
+  }
+
+  /* Legend */
+  .legend {
+    max-width: 900px;
+    margin: 0 auto 2.5rem;
+    padding: 0 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    justify-content: center;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--slate);
+  }
+
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* Calendar grid */
+  .calendar {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem 4rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+
+  /* Month card */
+  .month {
+    background: white;
+    border: 1px solid var(--mist);
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    transition: box-shadow 0.2s ease;
+  }
+
+  .month:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+
+  .month-header {
+    background: var(--forest);
+    padding: 1rem 1.25rem 0.85rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+  }
+
+  .month-name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--parchment);
+    letter-spacing: 0.01em;
+  }
+
+  .month-season {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.45);
+    margin-left: auto;
+  }
+
+  .month-body { padding: 1rem 1.25rem 1.25rem; }
+
+  .month-note {
+    font-size: 0.78rem;
+    font-style: italic;
+    color: var(--slate);
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--mist);
+    line-height: 1.6;
+  }
+
+  /* Event entry */
+  .event {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 0.85rem;
+    align-items: flex-start;
+  }
+
+  .event:last-child { margin-bottom: 0; }
+
+  .event-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 0.35rem;
+  }
+
+  .event-content { flex: 1; }
+
+  .event-date {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 0.1rem;
+  }
+
+  .event-title {
+    font-size: 0.88rem;
+    font-weight: normal;
+    color: var(--ink);
+    line-height: 1.4;
+    margin-bottom: 0.15rem;
+  }
+
+  .event-title strong {
+    font-weight: normal;
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  .event-desc {
+    font-size: 0.75rem;
+    color: var(--slate);
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  .event-loc {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #999;
+    margin-top: 0.15rem;
+  }
+
+  /* Recurring tag */
+  .recurring {
+    display: inline-block;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--mist);
+    color: var(--slate);
+    padding: 0.1rem 0.4rem;
+    border-radius: 2px;
+    margin-top: 0.2rem;
+  }
+
+  /* Recurring markets section */
+  .markets-box {
+    max-width: 1100px;
+    margin: 0 auto 0;
+    padding: 0 1.5rem 1.5rem;
+  }
+
+  .markets-card {
+    background: var(--forest);
+    color: var(--parchment);
+    border-radius: 2px;
+    padding: 1.75rem 2rem;
+  }
+
+  .markets-card h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 0.3rem;
+  }
+
+  .markets-card .sub {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.5);
+    margin-bottom: 1.25rem;
+  }
+
+  .markets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .market-item { }
+
+  .market-name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+    color: #c8b87a;
+  }
+
+  .market-when {
+    font-size: 0.8rem;
+    color: rgba(245,240,232,0.75);
+    line-height: 1.5;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 2rem;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #aaa;
+    border-top: 1px solid var(--mist);
+  }
+
+  /* Category colours */
+  .cat-festival  { background: #2d6a4f; }
+  .cat-music     { background: #7b3fa0; }
+  .cat-market    { background: #c4872a; }
+  .cat-garden    { background: #5a7a3a; }
+  .cat-sport     { background: #2a5c8b; }
+  .cat-show      { background: #8b4513; }
+  .cat-arts      { background: #c45e2a; }
+  .cat-community { background: #4a7c8b; }
+
+  @media (max-width: 600px) {
+    .calendar { grid-template-columns: 1fr; padding: 0 1rem 3rem; }
+    .markets-box { padding: 0 1rem 1rem; }
+    .markets-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media print {
+    body { background: white; }
+    .month { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav" aria-label="Primary">
+  <a class="site-nav__brand" href="../index.html">The Burrows <b>of Penrose</b></a>
+  <button class="site-nav__toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <ul class="site-nav__links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../about.html">The Homestead</a></li>
+    <li><a href="../gallery.html">Gallery</a></li>
+    <li><a href="../area.html">The Area</a></li>
+    <li><a href="../book.html">Stay</a></li>
+    <li><a class="site-nav__book" href="https://www.airbnb.com.au/" target="_blank" rel="noopener">Book on Airbnb</a></li>
+  </ul>
+</nav>
+<!-- guide sub-nav: move between the four area guides -->
+<div style="background:var(--oat,#efeae0);border-bottom:1px solid rgba(58,49,40,.08);font-family:'Josefin Sans',sans-serif;">
+  <div style="max-width:1100px;margin:0 auto;padding:.6rem clamp(1rem,4vw,1.5rem);display:flex;gap:1.2rem;flex-wrap:wrap;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;">
+    <span style="color:#9a9384;">Area guides:</span>
+    <a href="events.html" style="color:#3a3128;text-decoration:none;border-bottom:1px solid #c4872a;">Events</a>
+    <a href="food-and-drink.html" style="color:#6f685c;text-decoration:none;">Wineries &amp; Tables</a>
+    <a href="nature.html" style="color:#6f685c;text-decoration:none;">Walks &amp; Lookouts</a>
+    <a href="wildlife.html" style="color:#6f685c;text-decoration:none;">Wildlife</a>
+  </div>
+</div>
+
+
+<header class="header">
+  <div class="header-inner">
+    <div class="header-eyebrow">The Burrows of Penrose · Guest Guide</div>
+    <h1>Southern Highlands<br><em>Events Calendar</em></h1>
+    <div class="header-rule"></div>
+    <div class="header-sub">Penrose · Bundanoon · Bowral · Moss Vale · Berrima · Robertson · 2026</div>
+  </div>
+</header>
+
+<p class="intro">
+  A curated guide to the festivals, shows, markets and gatherings of the Southern Highlands — 
+  all within easy reach of your stay at The Burrows. Whether you're after a lively Scottish 
+  gathering, a quiet ramble through open gardens, or cycling through rolling hills, the 
+  Highlands has something on every month.
+</p>
+
+<div class="legend">
+  <div class="legend-item"><span class="legend-dot cat-festival"></span> Festival &amp; Fair</div>
+  <div class="legend-item"><span class="legend-dot cat-music"></span> Music &amp; Arts</div>
+  <div class="legend-item"><span class="legend-dot cat-market"></span> Market</div>
+  <div class="legend-item"><span class="legend-dot cat-garden"></span> Garden &amp; Nature</div>
+  <div class="legend-item"><span class="legend-dot cat-sport"></span> Sport</div>
+  <div class="legend-item"><span class="legend-dot cat-show"></span> Country Show</div>
+  <div class="legend-item"><span class="legend-dot cat-arts"></span> Arts Trail &amp; Culture</div>
+  <div class="legend-item"><span class="legend-dot cat-community"></span> Community</div>
+</div>
+
+<div class="calendar">
+
+  <!-- JANUARY -->
+  <div class="month">
+    <div class="month-header">
+      <span class="month-name">January</span>
+      <span class="month-season">Summer</span>
+    </div>
+    <div class="month-body">
+      <p class="month-note">Long golden summer days — the Highlands is lush and green. A quieter month for major events but perfect for exploring the bush, waterfalls, and Fitzroy Falls.</p>
+      <div class="event">
+        <span class="event-dot cat-show"></span>
+        <div class="event-content">
+          <div class="event-date">Mid January</div>
+          <div class="event-title"><strong>Bowral Show</strong></div>
+          <div class="event-desc">Two-day country agricultural show with livestock, horse events, local produce and family fun at the Bong Bong Picnic Racecourse.</div>
+          <div class="event-loc">📍 Bong Bong Picnic Racecourse, Bowral</div>
+        </div>
+      </div>
+      <div class="event">
+        <span class="event-dot cat-community"></span>
+        <div class="event-content">
+          <div class="event-date">Every 2nd Saturday · 11am</div>
+          <div class="event-title"><strong>Music@11</strong></div>
+          <div class="event-desc">Monthly recital series by Arts Bundanoon showcasing talented young musicians and visiting artists. Intimate and charming.</div>
+          <div class="event-loc">📍 Bundanoon</div>
+          <span class="recurring">Monthly year-round</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEBRUARY -->
+  <div class="month">
+    <div class="month-header">
+      <span class="month-name">February</span>
+      <span class="month-season">Late Summer</span>
+    </div>
+    <div class="month-body">
+      <p class="month-note">Warm evenings, the first hints of autumnal cool approaching. A great time to walk the gorges around Bundanoon and explore Morton National Park.</p>
+      <div class="event">
+        <span class="event-dot cat-show"></span>
+        <div class="event-content">
+          <div class="event-date">13–14 February</div>
+          <div class="event-title"><strong>Kangaroo Valley Show</strong></div>
+          <div class="event-desc">Classic country show day celebrating local agriculture with livestock, horses, produce, rides and community spirit in the beautiful valley.</div>
+          <div class="event-loc">📍 Kangaroo Valley Showground</div>
+        </div>
+      </div>
+      <div class="event">
+        <span class="event-dot cat-arts"></span>
+        <div class="event-content">
+          <div class="event-date">Ongoing</div>
+          <div class="event-title"><strong>Bundanoon Portrait Prize</strong></div>
+          <div class="event-desc">Artists from across Australia capture faces and stories of the Southern Highlands — a unique community art event with exhibition.</div>
+          <div class="event-loc">📍 Bundanoon</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARCH -->
+  <div class="month">
+    <div class="month-header">
+      <span class="month-name">March</span>
+      <span class="month-season">Early Autumn</span>
+    </div>
+    <div class="month-body">
+      <p class="month-note">Arguably the most beautiful month in the Highlands — the deciduous trees begin to turn gold and red, and the air is crisp and clear.</p>
+      <div class="event">
+        <span class="event-dot cat-show"></span>
+        <div class="event-content">
+          <div class="event-date">6–7 March</div>
+          <div class="event-title"><strong>Robertson Show</strong></div>
+          <div class="event-desc">Classic country event in the rich farming town of Robertson, with livestock, horses, produce and traditional show-day fun.</div>
+          <div class="event-loc">📍 Robertson Showground</div>
+        </div>
+      </div>
+      <div class="event">
+        <span class="event-dot cat-show"></span>
+        <div class="event-content">
+          <div class="event-date">13–15 March</div>
+          <div class="event-title"><strong>Moss Vale Show</strong></div>
+          <div class="event-desc">Multi-day country show with livestock, horse events, pavilion displays, fresh produce and the always-popular mullet competition.</div>
+          <div class="event-loc">📍 Moss Vale Showground</div>
+        </div>
+      </div>
+      <div class="event">
+        <span class="event-dot cat-music"></span>
+        <div class="event-content">
+          <div class="event-date">26–29 March</div>
+          <div class="event-title"><strong>Bowral Autumn Music Festival</strong></div>
+          <div class="event-desc">A highlight of the cultural calendar — a long weekend of chamber music celebrating Australian artists in beautiful heritage venues.</div>
+          <div class="event-loc">📍 St Jude's Church &amp; venues, Bowral</div>
+        </div>
+      </div>
+      <div class="event">
+        <span class="event-dot cat-music"></span>
+        <div class="event-content">
+          <div class="event-date">28 March</div>
+          <div class="event-title"><strong>A Day On The Green</strong></div>
+          <div class="event-desc">Much-loved outdoor concert set against the vines at Centennial Vineyards — live music, wine and golden autumn vibes.</div>
+          <div class="event-loc">📍 Centennial Vineyards, Bowral</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- APRIL -->
+  <div class="month">
+    <div class="month-header">
+      <span class="month-name">April</span>
+      <span class="month-season">Autumn</span>
+    </div>
+    <div class="month-body">
+      <p class="month-note">Peak autumn colour — the Highlands is at its most spectacular. April is the biggest month on the calendar with multiple major events.</p>
+      <div class="event">
+        <span class="event-dot cat-festival"></span>
+        <div class="event-content">
+          <div class="event-date">18 April ⭐ Major Event</div>
+          <div class="event-title"><strong>Bundanoon is Brigadoon</strong> — 45th Annual Highland Gathering</div>
+          <div class="event-desc">Australia's largest Scottish gathering draws 12,000+ visitors to Bundanoon for pipe bands, Highland dancing, heavy athletics, a grand street parade, clans and all-day festivities. Street parade from 9am, Opening Ceremony 10am.</div>
+          <div class="event-loc">📍 Bundanoon Oval, Erith St — just down the road from Penrose!</div>
+        </div>
+      </div>
+      <div class="event">
+        <span class="event-dot cat-festival"></span>
+        <div class="event-content">
+          <div class="event-date">15–19 April</div>
+          <div class="event-title"><strong>Rowany Festival</strong> — Medieval Gathering</div>
+          <div class="event-desc">A unique medieval-style camping event at Camp Wombaroo bringing together history, music, costumes and hands-on experiences in the bush.</div>
+          <div class="event-loc">📍 Camp Wombaroo, High Range</div>
+        </div>
+      </div>
+      <div class="event">
+        <span class="event-dot cat-garden"></span>
+        <div class="event-content">
+          <div class="event-date">18–19 April</div>
+          <div class="event-title"><strong>Open Gardens &amp; Plant Fair</strong></div>
+          <div class="event-desc">Beautiful private gardens open to the public with rare plants, expert talks and stalls — a relaxed and inspiring celebration of gardening.</div>
+          <div class="event-loc">📍 Southern Highlands Botanic Gardens</div>
+        </div>
+      </div>
+      <div class="event">
+        <span class="event-dot cat-festival"></span>
+        <div class="event-content">
+          <div class="event-date">Easter Weekend</div>
+          <div class="event-title"><strong>Burrawang Easter Markets</strong></div>
+          <div class="event-desc">Beloved Easter tradition in the charming village of Burrawang — artisan stalls, local produce and a community feel.</div>
+          <div class="event-loc">📍 Burrawang Village</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAY -->
+  <div class="month">
+    <div class="month-header">
+      <span class="month-name">May</span>
+      <span class="month-season">Late Autumn</span>
+    </div>
+    <div class="month-body">
+      <p class="month-note">Cool, still mornings with misty valleys — perfect walking weather. The last of the autumn colour lingers in the village gardens.</p>
+      <div class="event">
+        <span class="event-dot cat-music"></span>
+        <div class="event-content">
+          <div class="event-date">Every 2nd Saturday · 11am</div>
+          <div class="event-title"><strong>Music@11 Recital Series</strong></div>
+          <div class="event-desc">Monthly intimate music recitals featuring talented local and visiting artists across a variety of genres.</div>
+          <div class="event-loc">📍 Bundanoon</div>
+          <span class="recurring">Monthly — 2nd Saturday</span>
+        </div>
+      </div>
+      <div class="event">
+        <span class="event-dot cat-community"></span>
+        <div class="event-content">
+          <div class="event-date">Monthly</div>
+          <div class="event-title"><strong>Berrima Classic Car Meet</strong></div>
+          <div class="event-desc">Vintage and classic car enthusiasts gather over coffee in beautiful Berrima on the last Sunday of every month, 8–10am. Free community event.</div>
+          <div class="event-loc">📍 Berrima Village</div>
+          <span class="recurring">Last Sunday each month</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JUNE -->
+  <div class="month">
+    <div class="month-header">
+      <span class="month-name">June</span>
+      <span class="month-season">Winter</span>
+    </div>
+    <div class="month-body">
+      <p class="month-note">Winter arrives — frosty mornings, cosy fires and mist rolling through the valleys. Perfect for slow days with hot chocolate in Bundanoon or Berrima.</p>
+      <div class="event">
+        <span class="event-dot cat-festival"></span>
+        <div class="event-content">
+          <div class="event-date">Late June (dates TBC)</div>
+          <div class="event-title"><strong>Bundanoon Winterfest</strong></div>
+          <div class="event-desc">After a break in 2025, Winterfest returns in 2026 with something new — a week-long celebration of Bundanoon winter with markets, live music, warming food and community gatherings around braziers.</div>
+          <div class="event-loc">📍 Bundanoon Village</div>
+        </div>
+      </div>
+      <div class="event">
+        <span class="event-dot cat-community"></span>
+        <div class="event-content">
+          <div class="event-date">Ongoing June</div>
+          <div class="event-title"><strong>Christmas in July preparations</strong></div>
+          <div class="event-desc">Local estates and venues begin their winter Christmas lunches — Milton Park, Peppers Craigieburn and others offer special mid-winter dining events.</div>
+          <div class="event-loc">📍 Various venues, Southern Highlands</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JULY -->
+  <div class="month">
+    <div class="month-header">
+      <span class="month-name">July</span>
+      <span class="month-season">Winter</span>
+    </div>
+    <div class="month-body">
+      <p class="month-note">The coldest month — but full of warmth inside. School holidays bring families to the Highlands. Some mornings may see frost on the paddocks around Penrose.</p>
+      <div class="event">
+        <span class="event-dot cat-festival"></span>
+        <div class="event-content">
+          <div class="event-date">July (dates TBC)</div>
+          <div class="event-title"><strong>Bundanoon Winterfest</strong></div>
+          <div class="event-desc">Continues through July — evening events, workshops, pop-up dining and community gatherings celebrating the joys of Highlands winter.</div>
+          <div class="event-loc">📍 Bundanoon Village</div>
+        </div>
+      </div>
+      <div class="event">
+        <span class="event-dot cat-music"></span>
+        <div class="event-content">
+          <div class="event-date">23–26 July ⭐ Major Event</div>
+          <div class="event-title"><strong>Southern Highlands Writers' Festival</strong></div>
+          <div class="event-desc">Now in its 15th year — Australia's finest authors, thinkers and performers gather for four days of talks, panels and literary dinners. The opening gala Literary Dinner at Berkelouw Bookbarn is unmissable.</div>
+          <div class="event-loc">📍 Berkelouw Bookbarn (Berrima) &amp; Empire Cinemas (Bowral)</div>
+        </div>
+      </div>
+      <div class="event">
+        <span class="event-dot cat-community"></span>
+        <div class="event-content">
+          <div class="event-date">July School Holidays</div>
+          <div class="event-title"><strong>Sturt Winter School — Kids Art Classes</strong></div>
+          <div class="event-desc">Daily art classes for children during the school holidays — a wonderful family activity in the Highlands winter.</div>
+          <div class="event-loc">📍 Mittagong</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUGUST -->
+  <div class="month">
+    <div class="month-header">
+      <span class="month-name">August</span>
+      <span class="month-season">Late Winter</span>
+    </div>
+    <div class="month-body">
+      <p class="month-note">Winter's last hurrah — days are lengthening and the early wattle blooms begin to dot the roadsides with gold. Spring feels close.</p>
+      <div class="event">
+        <span class="event-dot cat-festival"></span>
+        <div class="event-content">
+          <div class="event-date">Annual (August)</div>
+          <div class="event-title"><strong>F.O.C.K. — Festival of Canoe &amp; Kayak</strong></div>
+          <div class="event-desc">Family-friendly festival of recreational paddling in Kangaroo Valley — races, social events and the legendary Canoebertoss on the Kangaroo River.</div>
+          <div class="event-loc">📍 Kangaroo Valley</div>
+        </div>
+      </div>
+      <div class="event">
+        <span class="event-dot cat-community"></span>
+        <div class="event-content">
+          <div class="event-date">Every 2nd Saturday · 11am</div>
+          <div class="event-title"><strong>Music@11 Recital Series</strong></div>
+          <div class="event-desc">Monthly recitals showcasing local and visiting musicians — a warm community arts staple year-round.</div>
+          <div class="event-loc">📍 Bundanoon</div>
+          <span class="recurring">Monthly — 2nd Saturday</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEPTEMBER -->
+  <div class="month">
+    <div class="month-header">
+      <span class="month-name">September</span>
+      <span class="month-season">Spring</span>
+    </div>
+    <div class="month-body">
+      <p class="month-note">Spring arrives and with it the Highlands' most beloved spectacle — the Tulip Time Festival. The gardens and roadsides burst into colour. Book ahead — accommodation fills fast.</p>
+      <div class="event">
+        <span class="event-dot cat-garden"></span>
+        <div class="event-content">
+          <div class="event-date">September → October ⭐ Major Event</div>
+          <div class="event-title"><strong>Tulip Time Festival</strong></div>
+          <div class="event-desc">One of Australia's oldest flower festivals — over 80,000 hand-planted tulip bulbs transform Corbett Gardens into a sea of colour. Markets, live music, long lunches and roving performers throughout. Open daily 9:30am–4:30pm, extended Saturdays to 6pm.</div>
+          <div class="event-loc">📍 Corbett Gardens, Bowral (and Tulip Trail across the region)</div>
+        </div>
+      </div>
+      <div class="event">
+        <span class="event-dot cat-festival"></span>
+        <div class="event-content">
+          <div class="event-date">19–20 September</div>
+          <div class="event-title"><strong>Kangaroo Valley Craft Beer &amp; BBQ Festival</strong></div>
+          <div class="event-desc">The festival's 10th year at The Friendly Inn — a day of craft beers, smoky BBQ, live music and relaxed country vibes.</div>
+          <div class="event-loc">📍 The Friendly Inn, Kangaroo Valley</div>
+        </div>
+      </div>
+      <div class="event">
+        <span class="event-dot cat-festival"></span>
+        <div class="event-content">
+          <div class="event-date">September</div>
+          <div class="event-title"><strong>Babe's Country Fair — Robertson</strong></div>
+          <div class="event-desc">In the town where the iconic film Babe was made — a joyful, family-friendly country fair celebrating Robertson's rural heritage. Back for a second year.</div>
+          <div class="event-loc">📍 Robertson</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OCTOBER -->
+  <div class="month">
+    <div class="month-header">
+      <span class="month-name">October</span>
+      <span class="month-season">Spring</span>
+    </div>
+    <div class="month-body">
+      <p class="month-note">Spring in full swing — warm days return. A packed month including the Bowral Classic cycling event and the Bundanoon Garden Ramble. The October long weekend draws huge visitor numbers.</p>
+      <div class="event">
+        <span class="event-dot cat-garden"></span>
+        <div class="event-content">
+          <div class="event-date">Continues to early October</div>
+          <div class="event-title"><strong>Tulip Time Festival</strong></div>
+          <div class="event-desc">The festival wraps up in early October — last chance to wander the gardens in full bloom.</div>
+          <div class="event-loc">📍 Corbett Gardens, Bowral</div>
+        </div>
+      </div>
+      <div class="event">
+        <span class="event-dot cat-festival"></span>
+        <div class="event-content">
+          <div class="event-date">October Long Weekend</div>
+          <div class="event-title"><strong>Food, Wine &amp; Music Festival in the Vineyards</strong></div>
+          <div class="event-desc">Set among the vines, a weekend celebration of local produce, Southern Highlands wines and live music — a highlight of the spring season.</div>
+          <div class="event-loc">📍 Southern Highlands Vineyards</div>
+        </div>
+      </div>
+      <div class="event">
+        <span class="event-dot cat-sport"></span>
+        <div class="event-content">
+          <div class="event-date">17–18 October ⭐ Major Event</div>
+          <div class="event-title"><strong>Bowral Classic — 10th Anniversary Gran Fondo</strong></div>
+          <div class="event-desc">A decade of Australia's most-loved cycling event. Three courses: 85km, 120km and 150km — all passing through the Highlands' most scenic roads including Bundanoon. Event Village at Loseby Park with live music, food and wine. Guests may see cyclists passing through the region on race day.</div>
+          <div class="event-loc">📍 Start: Bong Bong St, Bowral · Passes through Bundanoon &amp; Moss Vale</div>
+        </div>
+      </div>
+      <div class="event">
+        <span class="event-dot cat-garden"></span>
+        <div class="event-content">
+          <div class="event-date">24–25 October</div>
+          <div class="event-title"><strong>Bundanoon Garden Ramble</strong></div>
+          <div class="event-desc">Eight gorgeous private gardens in and around Bundanoon open for one weekend only — from intimate cottage gardens to large country estates. A lovely, relaxed wander.</div>
+          <div class="event-loc">📍 Bundanoon &amp; surrounds — very close to Penrose</div>
+        </div>
+      </div>
+      <div class="event">
+        <span class="event-dot cat-show"></span>
+        <div class="event-content">
+          <div class="event-date">16–18 October</div>
+          <div class="event-title"><strong>Kangaroo Valley Heritage &amp; Harvest Festival</strong></div>
+          <div class="event-desc">Celebrating the valley's rich heritage with exhibitions, live entertainment and local produce showcases.</div>
+          <div class="event-loc">📍 Kangaroo Valley</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOVEMBER -->
+  <div class="month">
+    <div class="month-header">
+      <span class="month-name">November</span>
+      <span class="month-season">Late Spring</span>
+    </div>
+    <div class="month-body">
+      <p class="month-note">Warm and green — the roses are out and the Highlands is at its lush best. The ARTSTrail makes November an arts-lovers' paradise.</p>
+      <div class="event">
+        <span class="event-dot cat-arts"></span>
+        <div class="event-content">
+          <div class="event-date">Early–Mid November ⭐ Major Event</div>
+          <div class="event-title"><strong>Southern Highlands ARTSTrail</strong></div>
+          <div class="event-desc">Two weekends of studio visits across the Shire — over 55 local artists open their studios, galleries and workshops for free self-guided exploration. A wonderful way to discover local talent and take home something unique.</div>
+          <div class="event-loc">📍 Various studios throughout the Southern Highlands — free entry</div>
+        </div>
+      </div>
+      <div class="event">
+        <span class="event-dot cat-festival"></span>
+        <div class="event-content">
+          <div class="event-date">Late November</div>
+          <div class="event-title"><strong>BASH — Buenos Aires in the Southern Highlands</strong></div>
+          <div class="event-desc">A beloved annual tango festival drawing dancers from across Australia and New Zealand to Bundanoon for a weekend of dancing, music and community. Now in its 20th year — one of the longest-running festivals in Oceania.</div>
+          <div class="event-loc">📍 Bundanoon</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DECEMBER -->
+  <div class="month">
+    <div class="month-header">
+      <span class="month-name">December</span>
+      <span class="month-season">Early Summer</span>
+    </div>
+    <div class="month-body">
+      <p class="month-note">The holiday season arrives in the Highlands — Christmas markets, carols in heritage venues and the special magic of summer evenings at altitude.</p>
+      <div class="event">
+        <span class="event-dot cat-community"></span>
+        <div class="event-content">
+          <div class="event-date">2nd Sunday December</div>
+          <div class="event-title"><strong>Berrima Schoolyard Christmas Market</strong></div>
+          <div class="event-desc">Special December edition of the beloved Berrima markets — festive stalls, local produce and Christmas gifts in the historic schoolyard setting.</div>
+          <div class="event-loc">📍 Berrima Public School</div>
+        </div>
+      </div>
+      <div class="event">
+        <span class="event-dot cat-community"></span>
+        <div class="event-content">
+          <div class="event-date">Throughout December</div>
+          <div class="event-title"><strong>Christmas at Heritage Estates</strong></div>
+          <div class="event-desc">Hopewood House, Milton Park and Peppers Craigieburn host festive Christmas lunches, carols evenings and special seasonal dining events throughout the month.</div>
+          <div class="event-loc">📍 Various heritage venues, Southern Highlands</div>
+        </div>
+      </div>
+      <div class="event">
+        <span class="event-dot cat-community"></span>
+        <div class="event-content">
+          <div class="event-date">Yerrinbool</div>
+          <div class="event-title"><strong>Yerrinbool Community Christmas</strong></div>
+          <div class="event-desc">A charming village-style Christmas celebration in the community hall at Yerrinbool — very close to Penrose and a lovely local tradition.</div>
+          <div class="event-loc">📍 Yerrinbool Community Hall</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Recurring Markets -->
+<div class="markets-box">
+  <div class="markets-card">
+    <h2>Recurring Markets &amp; Regular Events</h2>
+    <div class="sub">Happening every week or month — check local websites for exact dates</div>
+    <div class="markets-grid">
+      <div class="market-item">
+        <div class="market-name">Bundanoon Makers Market</div>
+        <div class="market-when">1st &amp; 3rd Sunday of each month (except Jan)<br>8:30am–2pm · Bundanoon Soldiers' Memorial Hall<br>Arts, crafts, local produce, baked goods</div>
+      </div>
+      <div class="market-item">
+        <div class="market-name">Moss Vale Showground Market</div>
+        <div class="market-when">3rd Sunday of each month · 9am<br>Artisans, craft, jams, fresh flowers, food trucks<br>Shady undercover area</div>
+      </div>
+      <div class="market-item">
+        <div class="market-name">Berrima Schoolyard Markets</div>
+        <div class="market-when">4th Sunday of each month (Feb–Nov) · 9am–1pm<br>Christmas market 2nd Sunday December<br>Fundraiser for Berrima Public School</div>
+      </div>
+      <div class="market-item">
+        <div class="market-name">Peppers Manor House Country Markets</div>
+        <div class="market-when">4th Saturday of each month · 9am–1pm<br>Local artisan and handmade goods<br>High tea bookings available</div>
+      </div>
+      <div class="market-item">
+        <div class="market-name">Berrima Classic Car Meet</div>
+        <div class="market-when">Last Sunday of each month · 8–10am<br>Free community event in Berrima village<br>All welcome — no car required!</div>
+      </div>
+      <div class="market-item">
+        <div class="market-name">Music@11 Recital Series</div>
+        <div class="market-when">2nd Saturday of each month · 11am<br>Year-round · Arts Bundanoon<br>Intimate music performances</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  Compiled for guests of The Burrows of Penrose · Southern Highlands, NSW · 2026<br>
+  Dates subject to change — verify with event organisers before attending · visitsouthernhighlands.com.au
+</div>
+
+
+<footer class="site-footer">
+  <div class="wrap" style="max-width:1160px;margin:0 auto;padding:0 clamp(1.1rem,4vw,2rem);">
+    <div class="site-footer__grid">
+      <div>
+        <div class="site-footer__brand">The Burrows of Penrose</div>
+        <p>A private rural homestead in the Southern Highlands of New South Wales, near Bundanoon and Penrose.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="../about.html">The Homestead</a></li>
+          <li><a href="../gallery.html">Gallery</a></li>
+          <li><a href="../area.html">The Area</a></li>
+          <li><a href="../book.html">Stay &amp; Book</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Local Guides</h4>
+        <ul>
+          <li><a href="events.html">Events Calendar</a></li>
+          <li><a href="food-and-drink.html">Wineries &amp; Tables</a></li>
+          <li><a href="nature.html">Walks &amp; Lookouts</a></li>
+          <li><a href="wildlife.html">Homestead Wildlife</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__base">
+      <span>&copy; 2026 The Burrows of Penrose &middot; Southern Highlands NSW</span>
+      <span><a href="../book.html">Book your stay &rarr;</a></span>
+    </div>
+  </div>
+</footer>
+<script src="../js/site.js"></script>
+
+</body>
+</html>

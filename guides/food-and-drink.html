@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eat, Drink &amp; Sip — Southern Highlands Guide · The Burrows of Penrose</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Libre+Baskerville:ital@0;1&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/site.css">
+<style>
+  :root {
+    --ink: #1a1410;
+    --parchment: #f5f0e8;
+    --cream: #faf7f2;
+    --forest: #2d4a2a;
+    --burgundy: #5e2233;
+    --moss: #5a7a3a;
+    --amber: #c4872a;
+    --rust: #8b3a2a;
+    --slate: #4a5568;
+    --mist: #e8e4dc;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Libre Baskerville', Georgia, serif;
+    line-height: 1.6;
+  }
+
+  /* Header */
+  .header {
+    background: var(--burgundy);
+    color: var(--parchment);
+    text-align: center;
+    padding: 3rem 2rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 25% 50%, rgba(196,135,42,0.22) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 40%, rgba(94,34,51,0.4) 0%, transparent 60%);
+  }
+
+  .header-inner { position: relative; z-index: 1; }
+
+  .header-eyebrow {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.6);
+    margin-bottom: 0.75rem;
+  }
+
+  .header h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    line-height: 1.15;
+  }
+
+  .header h1 em { font-style: italic; color: #d9b88a; }
+
+  .header-sub {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.55);
+    margin-top: 1rem;
+  }
+
+  .header-rule {
+    width: 60px;
+    height: 1px;
+    background: rgba(217,184,138,0.5);
+    margin: 1.25rem auto 0;
+  }
+
+  .intro {
+    max-width: 720px;
+    margin: 2.5rem auto;
+    padding: 0 2rem;
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--slate);
+    font-style: italic;
+    line-height: 1.8;
+  }
+
+  /* Section heading */
+  .section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin: 3rem 0 1.5rem;
+  }
+
+  .section-head h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--burgundy);
+    white-space: nowrap;
+  }
+
+  .section-head .line {
+    flex: 1;
+    height: 1px;
+    background: var(--mist);
+  }
+
+  .section-head .count {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #aaa;
+  }
+
+  .section-intro {
+    font-size: 0.88rem;
+    color: var(--slate);
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    max-width: 760px;
+  }
+
+  /* Cards grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .card {
+    background: white;
+    border: 1px solid var(--mist);
+    border-radius: 2px;
+    padding: 1.4rem 1.5rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    position: relative;
+  }
+
+  .card:hover { box-shadow: 0 5px 18px rgba(0,0,0,0.1); transform: translateY(-2px); }
+
+  .card.fave {
+    border: 1px solid var(--amber);
+    background: linear-gradient(180deg, #fffdf8 0%, white 100%);
+  }
+
+  .fave-badge {
+    position: absolute;
+    top: -9px;
+    right: 14px;
+    background: var(--amber);
+    color: white;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+  }
+
+  .card-name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.25;
+    margin-bottom: 0.2rem;
+  }
+
+  .card-loc {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 0.7rem;
+  }
+
+  .card-desc {
+    font-size: 0.82rem;
+    color: var(--slate);
+    line-height: 1.6;
+  }
+
+  .card-tip {
+    font-size: 0.78rem;
+    color: var(--ink);
+    margin-top: 0.7rem;
+    padding-top: 0.7rem;
+    border-top: 1px dotted var(--mist);
+    font-style: italic;
+  }
+
+  .card-tip strong {
+    font-family: 'Josefin Sans', sans-serif;
+    font-style: normal;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--moss);
+    display: block;
+    margin-bottom: 0.15rem;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 3rem 2rem 2rem;
+    margin-top: 3rem;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #aaa;
+    border-top: 1px solid var(--mist);
+  }
+
+  @media (max-width: 600px) {
+    .grid { grid-template-columns: 1fr; }
+    .section-head h2 { font-size: 1.4rem; }
+  }
+
+  @media print {
+    body { background: white; }
+    .card { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav" aria-label="Primary">
+  <a class="site-nav__brand" href="../index.html">The Burrows <b>of Penrose</b></a>
+  <button class="site-nav__toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <ul class="site-nav__links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../about.html">The Homestead</a></li>
+    <li><a href="../gallery.html">Gallery</a></li>
+    <li><a href="../area.html">The Area</a></li>
+    <li><a href="../book.html">Stay</a></li>
+    <li><a class="site-nav__book" href="https://www.airbnb.com.au/" target="_blank" rel="noopener">Book on Airbnb</a></li>
+  </ul>
+</nav>
+<!-- guide sub-nav: move between the four area guides -->
+<div style="background:var(--oat,#efeae0);border-bottom:1px solid rgba(58,49,40,.08);font-family:'Josefin Sans',sans-serif;">
+  <div style="max-width:1100px;margin:0 auto;padding:.6rem clamp(1rem,4vw,1.5rem);display:flex;gap:1.2rem;flex-wrap:wrap;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;">
+    <span style="color:#9a9384;">Area guides:</span>
+    <a href="events.html" style="color:#6f685c;text-decoration:none;">Events</a>
+    <a href="food-and-drink.html" style="color:#3a3128;text-decoration:none;border-bottom:1px solid #c4872a;">Wineries &amp; Tables</a>
+    <a href="nature.html" style="color:#6f685c;text-decoration:none;">Walks &amp; Lookouts</a>
+    <a href="wildlife.html" style="color:#6f685c;text-decoration:none;">Wildlife</a>
+  </div>
+</div>
+
+
+<header class="header">
+  <div class="header-inner">
+    <div class="header-eyebrow">The Burrows of Penrose · Guest Guide</div>
+    <h1>Eat, Drink<br><em>&amp; Sip</em></h1>
+    <div class="header-rule"></div>
+    <div class="header-sub">Wineries · Restaurants · Pubs of the Southern Highlands</div>
+  </div>
+</header>
+
+<p class="intro">
+  The Southern Highlands is cool-climate wine country, with more than 60 vineyards, century-old
+  village pubs and some of regional NSW's finest kitchens — all within a short drive of your stay.
+  Here are our favourites and the spots worth the trip. Booking ahead is wise, especially on
+  weekends and during festival season.
+</p>
+
+<!-- WINERIES & CELLAR DOORS -->
+<div class="section">
+  <div class="section-head">
+    <h2>Wineries &amp; Cellar Doors</h2>
+    <span class="line"></span>
+    <span class="count">Cool-climate country</span>
+  </div>
+  <p class="section-intro">
+    The Highlands' altitude makes it ideal for elegant Pinot Noir, Riesling and Chardonnay.
+    Most cellar doors offer tastings paired with cheese and charcuterie, and several have
+    excellent restaurants attached.
+  </p>
+  <div class="grid">
+
+    <div class="card fave">
+      <span class="fave-badge">Our Favourite</span>
+      <div class="card-name">Bendooley Estate</div>
+      <div class="card-loc">📍 Berrima · ~25 min from Penrose</div>
+      <div class="card-desc">
+        A 200-acre estate built around the iconic Berkelouw Book Barn — the restaurant sits among
+        shelves of rare and antiquarian books, with seasonal dishes paired to the Estate's own
+        cool-climate wines. The stone Cellar Door overlooks the vineyard for tastings by day, and
+        the more intimate Leo's by Night offers elevated evening dining.
+      </div>
+      <div class="card-tip">
+        <strong>Our tip</strong>
+        Book a long lunch in the Book Barn by the fire, then browse the bookshop afterwards. The
+        Bendooley Larder in Bowral is great for picking up wine and produce to take home.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Centennial Vineyards</div>
+      <div class="card-loc">📍 Bowral · ~30 min from Penrose</div>
+      <div class="card-desc">
+        The region's first and only five-star winery, just minutes from Bowral, spanning over
+        30 hectares of vines. The on-site restaurant offers relaxed lunches and high tea with
+        sweeping vineyard views — glass doors open to a deck in summer, and an enormous fireplace
+        warms the room in winter.
+      </div>
+      <div class="card-tip">
+        <strong>Our tip</strong>
+        Start with a flight of their Pinot Noir, the region's signature variety. They host the
+        annual A Day On The Green concert in March.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Tertini Wines</div>
+      <div class="card-loc">📍 Mittagong · ~30 min from Penrose</div>
+      <div class="card-desc">
+        A family-owned, high-altitude winery known for premium, elegant cool-climate wines —
+        Pinot Noir, Riesling and Chardonnay, plus alternative varieties like Arneis. Named in
+        Gourmet Traveller WINE's Best Cellar Doors every year since 2014.
+      </div>
+      <div class="card-tip">
+        <strong>Our tip</strong>
+        The cosy log fire makes this a perfect winter stop. Worth checking opening days before you go.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Artemis Wines &amp; Distillery</div>
+      <div class="card-loc">📍 Mittagong · ~30 min from Penrose</div>
+      <div class="card-desc">
+        A lively, family-run winery — the brothers Balog were the first to plant Pinot Noir in the
+        region back in 1996. Expect generous tastings, wood-fired pizzas, cheese and meat platters,
+        weekend entertainment, and their own gins too.
+      </div>
+      <div class="card-tip">
+        <strong>Our tip</strong>
+        Dog-friendly and family-friendly — a relaxed spot for a casual afternoon with pizza and a
+        glass of their famous Pinot.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Eling Forest Winery</div>
+      <div class="card-loc">📍 Sutton Forest · ~20 min from Penrose</div>
+      <div class="card-desc">
+        One of the oldest wineries in the Highlands, blending tradition with innovation across
+        historic grounds. A charming cellar door with an atmosphere of timeless elegance.
+      </div>
+      <div class="card-tip">
+        <strong>Our tip</strong>
+        One of the closer cellar doors to Penrose — easy to combine with a drive through Sutton Forest.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Joadja Estate</div>
+      <div class="card-loc">📍 High Range · ~30 min from Penrose</div>
+      <div class="card-desc">
+        The oldest continuous vineyard in the Highlands, run by a young couple in the hills above
+        Berrima. Pinot grigio, sauvignon blanc, chardonnay, cabernet and malbec, with each bottle's
+        illustrated label paying tribute to a local town. A heritage homestead provides a beautiful backdrop.
+      </div>
+      <div class="card-tip">
+        <strong>Our tip</strong>
+        The owners are often on hand to share their knowledge — a genuinely personal tasting experience.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Dawning Day Estate</div>
+      <div class="card-loc">📍 Exeter · ~15 min from Penrose</div>
+      <div class="card-desc">
+        A dreamy boutique, family-run micro-vineyard in nearby Exeter, planted with chardonnay,
+        pinot noir and gamay. Private tastings with the winemaker, plus a designer barn for those
+        wanting to linger.
+      </div>
+      <div class="card-tip">
+        <strong>Our tip</strong>
+        One of the closest cellar doors to The Burrows — book a private tasting for something special.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Sally's Corner Wines</div>
+      <div class="card-loc">📍 Exeter · ~15 min from Penrose</div>
+      <div class="card-desc">
+        A modern Exeter vineyard known for award-winning cool-climate whites and bold reds, with a
+        contemporary cellar door. Open weekends and public holidays.
+      </div>
+      <div class="card-tip">
+        <strong>Our tip</strong>
+        Close to home and quieter than the bigger names — a lovely weekend wander.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- RESTAURANTS -->
+<div class="section">
+  <div class="section-head">
+    <h2>Restaurants</h2>
+    <span class="line"></span>
+    <span class="count">From fine dining to long lunch</span>
+  </div>
+  <p class="section-intro">
+    The Highlands punches well above its weight for dining, from hatted fine dining to relaxed,
+    produce-driven cafés. Many kitchens lean hard on local growers — Robertson potatoes, Moonacres
+    Farm vegetables and Highlands cheeses feature heavily.
+  </p>
+  <div class="grid">
+
+    <div class="card fave">
+      <span class="fave-badge">Our Favourite</span>
+      <div class="card-name">Georges &amp; Fire Kitchen at Osborn House</div>
+      <div class="card-loc">📍 Bundanoon · ~10 min from Penrose</div>
+      <div class="card-desc">
+        A beautifully restored 1892 manor turned five-star boutique hotel with two restaurants.
+        Georges is the relaxed option, with terrace views over Morton National Park, a fireplace and
+        seasonal dishes built on local produce. Fire Kitchen brings Latin American live-fire cooking —
+        asado-inspired feasts using regional and South Coast produce.
+      </div>
+      <div class="card-tip">
+        <strong>Our tip</strong>
+        The monthly outdoor Fire Feast in the gardens is a real highlight — slow-cooked meats and
+        grilled vegetables from a dramatic fire pit. Book well ahead.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Biota Dining</div>
+      <div class="card-loc">📍 Bowral · ~30 min from Penrose</div>
+      <div class="card-desc">
+        Rated among the best restaurants in regional NSW. Chef-owner James Viles guides you through a
+        5- or 7-course degustation showcasing hyper-local Australian produce in a sun-drenched dining room.
+        The ultimate special-occasion meal in the Highlands.
+      </div>
+      <div class="card-tip">
+        <strong>Our tip</strong>
+        For something more casual, its sister venue Bertha's Meats serves up the same quality with a
+        relaxed identity.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Eschalot</div>
+      <div class="card-loc">📍 Berrima · ~25 min from Penrose</div>
+      <div class="card-desc">
+        A Highlands highlight for two decades, set in a quaint stone cottage. Chef Matty Roberts'
+        "Feed Me" menu plates up a fine-dining feast, with much of the produce grown on their own
+        property or sourced from nearby growers. Cosy and unpretentious.
+      </div>
+      <div class="card-tip">
+        <strong>Our tip</strong>
+        Ask to be seated in the wine room — snug, warm and surrounded by bottles.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Paste Australia</div>
+      <div class="card-loc">📍 Mittagong · ~30 min from Penrose</div>
+      <div class="card-desc">
+        The only chef-hatted restaurant in the Southern Highlands, led by internationally acclaimed
+        chef Bee Satongun. Refined Thai cuisine combining fresh regional produce with ancient recipes
+        and innovative technique.
+      </div>
+      <div class="card-tip">
+        <strong>Our tip</strong>
+        A standout for adventurous diners — the watermelon salad and curries come highly praised.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Three Blue Ducks</div>
+      <div class="card-loc">📍 Burradoo · ~30 min from Penrose</div>
+      <div class="card-desc">
+        Set in a historic stone building with fireplace-warmed rooms buzzing with locals and travellers.
+        Stepping in feels like dining in the elegant country home of a friend — relaxed, produce-led
+        and consistently good.
+      </div>
+      <div class="card-tip">
+        <strong>Our tip</strong>
+        A great all-rounder for breakfast, lunch or dinner without needing a special occasion.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Moonacres Kitchen</div>
+      <div class="card-loc">📍 Robertson · ~25 min from Penrose</div>
+      <div class="card-desc">
+        In sleepy Robertson, chef Stephen Santucci brings refined flair to a produce-driven café.
+        Breakfast and lunch grounded in organic produce from Moonacres Farm — the charred broccoli
+        sandwich with cashew butter is a cult favourite.
+      </div>
+      <div class="card-tip">
+        <strong>Our tip</strong>
+        Combine with the famous Robertson Pie Shop and Robertson Cheese Factory for a full village day out.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Bistro Sociale</div>
+      <div class="card-loc">📍 Bowral · ~30 min from Penrose</div>
+      <div class="card-desc">
+        A French-inspired European bistro inside the historic Berida Hotel. Rustic dishes like duck
+        liver parfait, pan-fried spatchcock and big steaks on the grill, with an impeccable drinks list.
+        Open seven days.
+      </div>
+      <div class="card-tip">
+        <strong>Our tip</strong>
+        Wander down the corridor afterwards to Aspinals whisky bar for a nightcap.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">The Press Shop</div>
+      <div class="card-loc">📍 Bowral · ~30 min from Penrose</div>
+      <div class="card-desc">
+        Part printing workshop, part café — the go-to Bowral brunch spot with a farm-to-fork mentality
+        showcasing Southern Highlands produce at its best. Relaxed and reliably excellent.
+      </div>
+      <div class="card-tip">
+        <strong>Our tip</strong>
+        Perfect for a leisurely weekend brunch before exploring Bowral's shops.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PUBS -->
+<div class="section">
+  <div class="section-head">
+    <h2>Pubs &amp; Country Inns</h2>
+    <span class="line"></span>
+    <span class="count">History on tap</span>
+  </div>
+  <p class="section-intro">
+    Some of these inns have been welcoming travellers for nearly two centuries. Expect roaring
+    fireplaces in winter, beer gardens in summer, and hearty, honest pub food.
+  </p>
+  <div class="grid">
+
+    <div class="card fave">
+      <span class="fave-badge">Our Favourite</span>
+      <div class="card-name">Bundanoon Hotel</div>
+      <div class="card-loc">📍 Bundanoon · ~10 min from Penrose</div>
+      <div class="card-desc">
+        The classic local — the closest proper pub to The Burrows and a reliably warm welcome.
+        Honest pub food, fair prices and a good choice on the menu, with the easy charm of a true
+        village hotel right in the heart of Bundanoon.
+      </div>
+      <div class="card-tip">
+        <strong>Our tip</strong>
+        The most convenient option for a casual dinner or a quiet pint without driving far. An easy
+        walk if you've wandered into Bundanoon village.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Surveyor General Inn</div>
+      <div class="card-loc">📍 Berrima · ~25 min from Penrose</div>
+      <div class="card-desc">
+        Built in 1834 from local convict-hewn sandstone, this is Australia's oldest continuously
+        licensed inn. The Bistro 1834 serves an extensive à la carte menu through the old stone walls
+        and corridors, or out in the beer garden and verandah. The steak sandwich, calamari and sticky
+        chicken wings are local favourites.
+      </div>
+      <div class="card-tip">
+        <strong>Our tip</strong>
+        Always packed — book ahead. Live music on some days, and a cosy fireplace in winter. A genuine
+        slice of colonial history.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">Briars Inn</div>
+      <div class="card-loc">📍 Bowral–Moss Vale · ~25 min from Penrose</div>
+      <div class="card-desc">
+        Built in 1845 and given a chic modern makeover, blending heritage charm with contemporary
+        comfort. A large lawn with lawn games and a kids' playground makes it especially good for families.
+      </div>
+      <div class="card-tip">
+        <strong>Our tip</strong>
+        The big lawn is ideal on a sunny day — bring the kids and let them roam while you relax.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-name">The Robertson Pie Shop &amp; Hotel</div>
+      <div class="card-loc">📍 Robertson · ~25 min from Penrose</div>
+      <div class="card-desc">
+        The famous Robertson Pie Shop is a Highlands institution and an essential stop for a hearty
+        pie, while the village hotel offers classic country-pub fare in the lush, green hills made
+        famous by the film Babe.
+      </div>
+      <div class="card-tip">
+        <strong>Our tip</strong>
+        Grab a pie for the road, then visit the Robertson Cheese Factory just nearby.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="footer">
+  Compiled for guests of The Burrows of Penrose · Southern Highlands, NSW<br>
+  Opening days and hours change seasonally — please book ahead and confirm directly with each venue
+</div>
+
+
+<footer class="site-footer">
+  <div class="wrap" style="max-width:1160px;margin:0 auto;padding:0 clamp(1.1rem,4vw,2rem);">
+    <div class="site-footer__grid">
+      <div>
+        <div class="site-footer__brand">The Burrows of Penrose</div>
+        <p>A private rural homestead in the Southern Highlands of New South Wales, near Bundanoon and Penrose.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="../about.html">The Homestead</a></li>
+          <li><a href="../gallery.html">Gallery</a></li>
+          <li><a href="../area.html">The Area</a></li>
+          <li><a href="../book.html">Stay &amp; Book</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Local Guides</h4>
+        <ul>
+          <li><a href="events.html">Events Calendar</a></li>
+          <li><a href="food-and-drink.html">Wineries &amp; Tables</a></li>
+          <li><a href="nature.html">Walks &amp; Lookouts</a></li>
+          <li><a href="wildlife.html">Homestead Wildlife</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__base">
+      <span>&copy; 2026 The Burrows of Penrose &middot; Southern Highlands NSW</span>
+      <span><a href="../book.html">Book your stay &rarr;</a></span>
+    </div>
+  </div>
+</footer>
+<script src="../js/site.js"></script>
+
+</body>
+</html>
