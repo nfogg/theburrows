@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://theburrowsofpenrose.com.au/sitemap.xml
+Sitemap: https://theburrowsofpenrose.au/sitemap.xml
