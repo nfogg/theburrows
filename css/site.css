@@ -221,12 +221,12 @@
   cursor: pointer;
   border: 1px solid transparent;
 }
-.btn--primary { background: var(--amber); color: #fff; }
-.btn--primary:hover { background: var(--amber-deep); color: #fff; }
-.btn--ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,0.55); }
-.btn--ghost:hover { background: rgba(255,255,255,0.12); color: #fff; }
-.btn--dark { background: var(--eucalypt); color: #fff; }
-.btn--dark:hover { background: var(--eucalypt-deep); color: #fff; }
+.btn--primary { background: var(--amber); color: #fff !important; }
+.btn--primary:hover { background: var(--amber-deep); color: #fff !important; }
+.btn--ghost { background: rgba(0,0,0,0.25); color: #fff !important; border-color: rgba(255,255,255,0.85); }
+.btn--ghost:hover { background: rgba(0,0,0,0.45); color: #fff !important; }
+.btn--dark { background: var(--eucalypt); color: #fff !important; }
+.btn--dark:hover { background: var(--eucalypt-deep); color: #fff !important; }
 
 /* =====================================================================
    SPLIT (image + text)
@@ -327,6 +327,10 @@
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: clamp(1rem, 2.5vw, 1.6rem);
 }
+.guide-card,
+.guide-card:hover {
+  color: #fff !important;
+}
 .guide-card {
   display: block;
   border-radius: 2px;
@@ -343,7 +347,7 @@
 .guide-card:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(0,0,0,0.16); color:#fff; }
 .guide-card::after {
   content:''; position:absolute; inset:0; z-index:0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.05), rgba(0,0,0,0.45));
+  background: linear-gradient(180deg, rgba(0,0,0,0.10), rgba(0,0,0,0.65));
 }
 .guide-card > * { position: relative; z-index: 1; }
 .guide-card.gc-events   { background: #2d4a2a; }
@@ -353,7 +357,7 @@
 .guide-card .gc-eyebrow {
   font-family: 'Josefin Sans', sans-serif;
   font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
-  opacity: 0.7; margin-bottom: 0.4rem;
+  opacity: 0.95; margin-bottom: 0.4rem;
 }
 .guide-card h3 {
   font-family: 'Playfair Display', Georgia, serif;
