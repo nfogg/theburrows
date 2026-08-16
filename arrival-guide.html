@@ -145,6 +145,30 @@
     color: var(--stone); text-align: center; padding-top: .4rem;
   }
 
+  /* ---------- warning callout (route / access) ---------- */
+  .warn-card {
+    background: #fff; border: 1.4px solid var(--amber); border-radius: 3px;
+    padding: 1.2rem 1.4rem; display: flex; gap: .8rem; align-items: flex-start;
+  }
+  .warn-card svg { flex: none; width: 22px; height: 22px; margin-top: .1rem; color: var(--amber-deep); }
+  .warn-card .k {
+    font-family: 'Josefin Sans', sans-serif; font-size: .66rem; font-weight: 600;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--amber-deep);
+    display: block; margin-bottom: .3rem;
+  }
+  .warn-card p { font-size: .92rem; color: var(--bark); margin: 0; line-height: 1.55; }
+
+  /* ---------- property map plate ---------- */
+  .map-plate { text-align: center; margin: 1.6rem 0; }
+  .map-plate img {
+    width: 100%; max-width: 340px; margin: 0 auto; display: block;
+    border: 1px solid var(--sand); border-radius: 3px; background: var(--oat);
+  }
+  .map-plate figcaption {
+    font-family: 'Josefin Sans', sans-serif; font-size: .74rem; color: var(--stone);
+    margin-top: .7rem;
+  }
+
   @media (max-width: 640px) {
     .jump-rail { top: 0; }
   }
@@ -215,7 +239,7 @@
     <div class="ess-grid">
       <div class="ess-card">
         <span class="k">You are staying at</span>
-        <div class="v">170 Victoria Street<br>Penrose NSW 2579<small>Cross street: Kareela Road</small></div>
+        <div class="v">170 Victoria Street<br>Penrose NSW 2579<small>Access via Kareela Road only</small></div>
       </div>
       <div class="ess-card">
         <span class="k">Check-in / check-out</span>
@@ -247,7 +271,18 @@
     two hours from Canberra. The run down the Hume is straightforward — it's the last twenty
     minutes, once you turn off toward Penrose, that starts to feel like arriving somewhere.</p>
 
-    <div class="know-card">
+    <div class="warn-card">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 9v4"/><path d="M12 16.5h.01"/><path d="M10.3 3.9L2.5 17.5a1.6 1.6 0 001.4 2.4h16.2a1.6 1.6 0 001.4-2.4L13.7 3.9a1.6 1.6 0 00-2.8 0z"/></svg>
+      <div>
+        <span class="k">Access via Kareela Road only</span>
+        <p>Turn into <strong>Victoria Street from Kareela Road</strong> — that's the only way in.
+        Some GPS apps try to route you in via <strong>Quigg Fire Trail</strong>; it crosses a creek and is
+        <strong>impassable to cars</strong>, so please ignore any suggestion to take it. If your
+        directions app tries to send you that way, stick to Kareela Road instead.</p>
+      </div>
+    </div>
+
+    <div class="know-card" style="margin-top:1rem;">
       <span class="k">Shop before you turn off</span>
       <p>Penrose village has no shop, no fuel and no coffee. The nearest supplies are in
       <strong>Bundanoon</strong>, about ten minutes away — The Village Grocer &amp; Store (65
@@ -264,10 +299,15 @@
     <p class="eyebrow">Landing properly</p>
     <h2 class="h-display" style="font-size:clamp(1.6rem,4vw,2.2rem);">Check-in, the gate &amp; your keys</h2>
 
+    <figure class="map-plate">
+      <img src="images/property-map.svg" alt="Property map of The Burrows of Penrose, showing the driveway and top gate off Victoria Street relative to the homestead and the walking trails">
+      <figcaption>The driveway and top gate, relative to the house and the walking trails.</figcaption>
+    </figure>
+
     <ol class="steps" style="margin-top:1.6rem;">
       <li>
         <strong>Find the top gate.</strong>
-        <span>It's directly ahead of you as Victoria Street turns to the left. Please keep this gate shut.</span>
+        <span>Coming from Kareela Road, it's directly ahead of you as Victoria Street turns to the left. Please keep this gate shut.</span>
       </li>
       <li>
         <strong>Follow the driveway down.</strong>
