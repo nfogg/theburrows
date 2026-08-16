@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Before You Arrive — The Burrows of Penrose</title>
+<meta name="description" content="Everything to know before you arrive at The Burrows of Penrose — directions, check-in, the gate and keys, what to bring, and who to call.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Libre+Baskerville:ital@0;1&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<style>
+  /* ---------- page-specific: quick-jump chip rail ---------- */
+  .jump-rail {
+    position: sticky; top: 56px; z-index: 90;
+    background: rgba(251,249,245,.94);
+    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(58,49,40,.08);
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .jump-rail::-webkit-scrollbar { display: none; }
+  .jump-rail__inner {
+    display: flex; gap: .5rem; white-space: nowrap;
+    padding: .65rem clamp(1.1rem,4vw,2rem);
+  }
+  .jump-rail a {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--stone); background: var(--oat);
+    padding: .5rem .9rem; border-radius: 999px;
+    flex: none; transition: background .2s ease, color .2s ease;
+  }
+  .jump-rail a:hover { background: var(--eucalypt); color: #fff; }
+
+  /* ---------- welcome note ---------- */
+  .note-card {
+    background: #fff; border: 1px solid var(--sand); border-radius: 3px;
+    padding: clamp(1.4rem,4vw,2rem); box-shadow: 0 1px 4px rgba(0,0,0,.04);
+  }
+  .signoff {
+    font-family: 'Playfair Display', Georgia, serif; font-style: italic;
+    font-size: 1.15rem; color: var(--eucalypt-deep); margin-top: 1.2rem;
+  }
+  .signoff small {
+    display: block; font-family: 'Josefin Sans', sans-serif; font-style: normal;
+    font-size: .62rem; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--stone); margin-top: .3rem;
+  }
+
+  /* ---------- essentials cards ---------- */
+  .ess-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(210px,1fr));
+    gap: 1px; background: var(--sand); border: 1px solid var(--sand);
+    border-radius: 3px; overflow: hidden;
+  }
+  .ess-card { background: #fff; padding: 1.2rem 1.3rem; }
+  .ess-card .k {
+    font-family: 'Josefin Sans', sans-serif; font-size: .64rem; font-weight: 600;
+    letter-spacing: .16em; text-transform: uppercase; color: var(--eucalypt);
+    display: block; margin-bottom: .35rem;
+  }
+  .ess-card .v { font-size: 1.02rem; }
+  .ess-card .v small { display: block; font-size: .82rem; color: var(--stone); margin-top: .15rem; }
+  .ess-card a { color: var(--bark); }
+  .ess-card a:hover { color: var(--amber-deep); }
+
+  .btn-row { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.3rem; }
+
+  /* ---------- numbered steps ---------- */
+  .steps { list-style: none; counter-reset: step; }
+  .steps li {
+    counter-increment: step; position: relative; padding: 0 0 1.1rem 2.6rem;
+    margin-bottom: 1.1rem; border-bottom: 1px solid var(--sand);
+  }
+  .steps li:last-child { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
+  .steps li::before {
+    content: counter(step); position: absolute; left: 0; top: 0;
+    width: 1.9rem; height: 1.9rem; border-radius: 50%;
+    background: var(--eucalypt); color: #fff;
+    font-family: 'Josefin Sans', sans-serif; font-size: .8rem; font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .steps li strong { display: block; margin-bottom: .2rem; }
+  .steps li span { color: var(--stone); font-size: .94rem; }
+
+  /* ---------- two-column provide/bring ---------- */
+  .pb-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.2rem,4vw,2.2rem);
+  }
+  .pb-grid h4 {
+    font-family: 'Josefin Sans', sans-serif; font-size: .7rem; font-weight: 600;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--eucalypt);
+    margin-bottom: .7rem;
+  }
+  .pb-grid ul { list-style: none; }
+  .pb-grid li {
+    padding-left: 1.1rem; position: relative; margin-bottom: .55rem;
+    font-size: .92rem; color: var(--stone); line-height: 1.55;
+  }
+  .pb-grid li::before { content: '—'; position: absolute; left: 0; color: var(--amber); }
+  @media (max-width: 560px) { .pb-grid { grid-template-columns: 1fr; } }
+
+  /* ---------- rules chips ---------- */
+  .rule-list { list-style: none; }
+  .rule-list li {
+    display: flex; gap: .7rem; padding: .7rem 0; border-bottom: 1px solid var(--sand);
+    font-size: .93rem; color: var(--stone); align-items: flex-start;
+  }
+  .rule-list li:last-child { border-bottom: 0; }
+  .rule-list li svg { flex: none; width: 18px; height: 18px; margin-top: .15rem; color: var(--amber); }
+  .rule-list li strong { color: var(--bark); }
+
+  /* ---------- good-to-know accordion-style notes ---------- */
+  .know-card {
+    background: var(--oat); border-radius: 3px; padding: 1.2rem 1.4rem; margin-bottom: .9rem;
+  }
+  .know-card:last-child { margin-bottom: 0; }
+  .know-card .k {
+    font-family: 'Josefin Sans', sans-serif; font-size: .66rem; font-weight: 600;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--eucalypt-deep);
+    display: block; margin-bottom: .3rem;
+  }
+  .know-card p { font-size: .92rem; color: var(--stone); margin: 0; }
+
+  /* ---------- emergency block ---------- */
+  .emergency {
+    background: var(--bark); color: #fff; border-radius: 3px;
+    padding: clamp(1.6rem,4vw,2.2rem); text-align: center;
+  }
+  .emergency .num {
+    font-family: 'Playfair Display', Georgia, serif; font-size: clamp(3rem,10vw,4rem);
+    line-height: 1; color: #fff;
+  }
+  .emergency .lbl {
+    font-family: 'Josefin Sans', sans-serif; font-size: .68rem; letter-spacing: .2em;
+    text-transform: uppercase; color: rgba(255,255,255,.65); margin-top: .3rem;
+  }
+  .emergency p { color: rgba(255,255,255,.85); max-width: 42ch; margin: 1rem auto 0; font-size: .92rem; }
+  .emergency .addr { color: #fff; font-weight: 600; }
+
+  .bookmark-tip {
+    font-family: 'Josefin Sans', sans-serif; font-size: .78rem; letter-spacing: .02em;
+    color: var(--stone); text-align: center; padding-top: .4rem;
+  }
+
+  @media (max-width: 640px) {
+    .jump-rail { top: 0; }
+  }
+</style>
+</head>
+<body class="page">
+
+<!-- ============ NAV (brand + full menu — one tap back to the main site) ============ -->
+<nav class="site-nav" aria-label="Primary">
+  <a class="site-nav__brand" href="index.html">The Burrows <b>of Penrose</b></a>
+  <button class="site-nav__toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <ul class="site-nav__links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">The Homestead</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="area.html">The Area</a></li>
+    <li><a href="book.html">Stay</a></li>
+    <li><a class="site-nav__book" href="https://www.airbnb.com.au/rooms/50922948" target="_blank" rel="noopener">Book on Airbnb</a></li>
+  </ul>
+</nav>
+
+<!-- ============ QUICK JUMP ============ -->
+<div class="jump-rail" aria-label="Jump to section">
+  <div class="jump-rail__inner">
+    <a href="#essentials">Essentials</a>
+    <a href="#getting-there">Getting there</a>
+    <a href="#arrival">Gate &amp; keys</a>
+    <a href="#provide-bring">What to bring</a>
+    <a href="#rules">House rules</a>
+    <a href="#good-to-know">Good to know</a>
+    <a href="#emergency">Emergency</a>
+  </div>
+</div>
+
+<!-- ============ HEADER ============ -->
+<header class="band" style="height:clamp(240px,34vw,380px);">
+  <img src="images/welcome.jpg" alt="The homestead nestled in its paddocks">
+  <div style="position:relative;z-index:1;text-align:center;padding:0 1.4rem;">
+    <p class="eyebrow" style="color:rgba(255,255,255,.85)">Before You Arrive</p>
+    <h1 class="h-display" style="color:#fff;font-size:clamp(2rem,7vw,3.2rem);margin-top:.4rem;">Everything to know<br>before you get here</h1>
+  </div>
+</header>
+
+<!-- ============ WELCOME NOTE ============ -->
+<section class="section-pad--sm">
+  <div class="wrap wrap--narrow reveal">
+    <div class="note-card">
+      <p class="eyebrow">A quick hello</p>
+      <p style="margin-top:.8rem;">We're so glad you're staying with us. This page has the practical
+      things worth knowing before you set off — the drive in, check-in, the gate and keys, what to
+      pack, and who to call if you need us or anyone else.</p>
+      <p style="margin-top:.8rem;">Once you're here, there's a full guest guidebook on the kitchen
+      table with everything else — the wood heater, the appliances, the wildlife, the walks. This
+      page is just the headline version, for the drive down.</p>
+      <p class="signoff">Karen &amp; Nicolas<small>The Burrows of Penrose</small></p>
+    </div>
+    <p class="bookmark-tip">Tip: bookmark this page or save it to your home screen — reception can
+    be patchy on the last stretch of the drive in.</p>
+  </div>
+</section>
+
+<!-- ============ ESSENTIALS AT A GLANCE ============ -->
+<section class="section-pad--sm tint" id="essentials">
+  <div class="wrap reveal">
+    <p class="eyebrow" style="text-align:center;">At a glance</p>
+    <h2 class="h-display" style="text-align:center;font-size:clamp(1.6rem,4vw,2.2rem);margin:.4rem 0 1.6rem;">The essentials</h2>
+
+    <div class="ess-grid">
+      <div class="ess-card">
+        <span class="k">You are staying at</span>
+        <div class="v">170 Victoria Street<br>Penrose NSW 2579<small>Cross street: Kareela Road</small></div>
+      </div>
+      <div class="ess-card">
+        <span class="k">Check-in / check-out</span>
+        <div class="v">From 3:00 pm<br>By 10:00 am</div>
+      </div>
+      <div class="ess-card">
+        <span class="k">Wi-Fi</span>
+        <div class="v">Network: The Burrows<small>Password: ofpenrose</small></div>
+      </div>
+      <div class="ess-card">
+        <span class="k">Contact us</span>
+        <div class="v">Message through the Airbnb app<small>We check it often, and it keeps everything in one place</small></div>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <a class="btn btn--primary" href="https://www.google.com/maps/search/?api=1&query=170+Victoria+Street+Penrose+NSW+2579" target="_blank" rel="noopener">Get directions</a>
+      <a class="btn btn--dark" href="#emergency">Emergency info</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GETTING THERE ============ -->
+<section class="section-pad" id="getting-there">
+  <div class="wrap wrap--narrow reveal">
+    <p class="eyebrow">On the way</p>
+    <h2 class="h-display" style="font-size:clamp(1.6rem,4vw,2.2rem);">Getting there</h2>
+    <p style="color:var(--stone);margin:1rem 0;">About an hour and a half from Sydney, and roughly
+    two hours from Canberra. The run down the Hume is straightforward — it's the last twenty
+    minutes, once you turn off toward Penrose, that starts to feel like arriving somewhere.</p>
+
+    <div class="know-card">
+      <span class="k">Shop before you turn off</span>
+      <p>Penrose village has no shop, no fuel and no coffee. The nearest supplies are in
+      <strong>Bundanoon</strong>, about ten minutes away — The Village Grocer &amp; Store (65
+      Railway Ave, daily 8.30 am–7.30 pm) and Westside Petroleum (61 Railway Ave, daily 6 am–10 pm).
+      Full supermarkets are 20–25 minutes away in Moss Vale and Mittagong. Our advice: do the big
+      shop on the way in — once you're through the gate you won't want to get back in the car.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ARRIVAL: GATE, DRIVEWAY, KEYS ============ -->
+<section class="section-pad--sm tint" id="arrival">
+  <div class="wrap wrap--narrow reveal">
+    <p class="eyebrow">Landing properly</p>
+    <h2 class="h-display" style="font-size:clamp(1.6rem,4vw,2.2rem);">Check-in, the gate &amp; your keys</h2>
+
+    <ol class="steps" style="margin-top:1.6rem;">
+      <li>
+        <strong>Find the top gate.</strong>
+        <span>It's directly ahead of you as Victoria Street turns to the left. Please keep this gate shut.</span>
+      </li>
+      <li>
+        <strong>Follow the driveway down.</strong>
+        <span>It runs the full length of one side of the property to the homestead at the far end — all-weather and drains well, but take it slowly, it has a few dips.</span>
+      </li>
+      <li>
+        <strong>Park in the shed or on the gravel.</strong>
+        <span>There are three bays in the parking shed, or plenty of room on the gravel driveway. Keep to the gravel — the ground right around the house is soft.</span>
+      </li>
+      <li>
+        <strong>Collect the keys from the lock box.</strong>
+        <span>It's opposite the front door. Your access code comes through in your Airbnb message before you travel.</span>
+      </li>
+      <li>
+        <strong>Return the keys to the lock box during your stay.</strong>
+        <span>That way everyone in your group can come and go on the code, and nobody's left waiting on the verandah.</span>
+      </li>
+    </ol>
+
+    <div class="know-card" style="margin-top:1.6rem;">
+      <span class="k">Arriving after dark</span>
+      <p>The driveway is dark at night — drive slowly and you'll reach the house. The outdoor
+      lights are on a timer and usually on by nightfall.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FIRST HALF HOUR ============ -->
+<section class="section-pad">
+  <div class="wrap wrap--narrow reveal">
+    <p class="eyebrow">Once you're in</p>
+    <h2 class="h-display" style="font-size:clamp(1.6rem,4vw,2.2rem);">Your first half hour</h2>
+    <ul class="rule-list" style="margin-top:1.2rem;">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3c2 3 0 5 0 7 3-1 5 1 5 4a5 5 0 01-10 0c0-2 1-3 2-4 1 2 3 1 3-1 0-3-1-4 0-6z"/></svg>
+        <span><strong>In winter, light the wood heater first.</strong> It takes a couple of hours to bring the house up to temperature, so start it when you arrive rather than after dinner. Firelighters and kindling are in the bucket beside the fire; the guidebook inside has the full how-to.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8h13a3 3 0 010 6h-1"/><path d="M4 8v7a3 3 0 003 3h6a3 3 0 003-3v-1"/><path d="M4 4v2"/><path d="M8 4v2"/></svg>
+        <span><strong>Put the kettle on.</strong> Coffee pods, tea, sugar and basic condiments are in the pantry.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M4 9h16M4 15h16M10 3v18"/></svg>
+        <span><strong>Open windows, not doors.</strong> Every window has a flyscreen — an open door lets in possums, insects and the occasional more surprising visitor.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <span><strong>Relax.</strong> Take a drink out to the verandah and enjoy the view — that's rather the point.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ WHAT WE PROVIDE / WHAT TO BRING ============ -->
+<section class="section-pad--sm tint" id="provide-bring">
+  <div class="wrap reveal">
+    <p class="eyebrow" style="text-align:center;">Packing list</p>
+    <h2 class="h-display" style="text-align:center;font-size:clamp(1.6rem,4vw,2.2rem);margin:.4rem 0 1.6rem;">What we provide · what to bring</h2>
+
+    <div class="pb-grid">
+      <div>
+        <h4>We provide</h4>
+        <ul>
+          <li>All bed linen, beds made up before you arrive, plus bath and hand towels</li>
+          <li>A fully equipped kitchen for nine, and a picnic set</li>
+          <li>Coffee pods, tea, sugar, salt, pepper, oil and basic condiments</li>
+          <li>Firewood and kindling for the wood heater and fire pits</li>
+          <li>A cot and a high chair, whenever you need them</li>
+          <li>Games, books, puzzles and outdoor games</li>
+          <li>Wi-Fi, smart TV and a Bluetooth soundbar</li>
+          <li>Washing machine, dryer and clothesline</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Please bring</h4>
+        <ul>
+          <li>Your own towels for the dam and outdoors — house towels stay indoors</li>
+          <li>Groceries — there's no shop in Penrose</li>
+          <li>Closed walking shoes for the hundred acres of paddock and bush</li>
+          <li>Warm layers, even in summer — we're at altitude and evenings cool sharply</li>
+          <li>Swimmers, if it's warm — the dam is a proper swimming hole</li>
+          <li>Sun protection, and repellent for dusk on the verandah</li>
+          <li>Your own coffee if you're particular — the machine takes Aldi pods only</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOUSE RULES ============ -->
+<section class="section-pad" id="rules">
+  <div class="wrap wrap--narrow reveal">
+    <p class="eyebrow">The short version</p>
+    <h2 class="h-display" style="font-size:clamp(1.6rem,4vw,2.2rem);">House rules</h2>
+    <p style="color:var(--stone);margin:1rem 0;">Treat it like a friend's place. The full version is
+    in the guidebook inside — here's what matters most before you arrive.</p>
+    <ul class="rule-list">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg><span><strong>Nine guests maximum</strong>, and nobody extra staying overnight</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg><span><strong>No parties or events.</strong> It's a quiet valley with neighbours who value it</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg><span><strong>No pets.</strong> The wildlife is the whole point of the place</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg><span><strong>No smoking indoors</strong></span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg><span><strong>Only drive on the driveway</strong> — the tracks are for walking</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg><span><strong>Leave gates as you found them</strong></span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg><span><strong>Supervise children at the dam</strong>, every time</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ GOOD TO KNOW (rural notes) ============ -->
+<section class="section-pad--sm tint" id="good-to-know">
+  <div class="wrap wrap--narrow reveal">
+    <p class="eyebrow">Living rural</p>
+    <h2 class="h-display" style="font-size:clamp(1.6rem,4vw,2.2rem);">A few things worth knowing</h2>
+    <p style="color:var(--stone);margin:1rem 0 1.4rem;">A rural property runs a little differently
+    to a house in town. Nothing here is difficult — just worth knowing before you arrive.</p>
+
+    <div class="know-card">
+      <span class="k">The water is rainwater</span>
+      <p>Every drop comes off the roof into the tanks. It's filtered and drinkable — use it as you
+      would at home, with half an eye on the fact that it isn't limitless.</p>
+    </div>
+    <div class="know-card">
+      <span class="k">The toilets are septic</span>
+      <p>Only pee, poo and toilet paper. No wipes, ever — even ones labelled "flushable".</p>
+    </div>
+    <div class="know-card">
+      <span class="k">Driving at dusk</span>
+      <p>Kangaroos and wombats move at dawn and dusk, often without warning. Between about 4 pm and
+      8 pm, slow down on the local roads — if you see one, expect more behind it.</p>
+    </div>
+    <div class="know-card">
+      <span class="k">Before lighting any outdoor fire</span>
+      <p>Check for a Total Fire Ban — the Fires Near Me NSW app, or rfs.nsw.gov.au. Our district is
+      the Southern Highlands. Check on the day, not the night before.</p>
+    </div>
+    <div class="know-card">
+      <span class="k">Phones and internet</span>
+      <p>Coverage is generally good here and across most of the Southern Highlands, though the last
+      stretch of the drive in can be patchy — worth downloading directions or this page before you
+      lose signal.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EMERGENCY ============ -->
+<section class="section-pad" id="emergency">
+  <div class="wrap wrap--narrow reveal">
+    <div class="emergency">
+      <div class="num"><a href="tel:000" style="color:#fff;">000</a></div>
+      <div class="lbl">Ambulance · Fire · Police</div>
+      <p>Give the call taker this address: <span class="addr">The Burrows of Penrose, 170 Victoria
+      Street, Penrose NSW 2579</span>. Nearest cross street: Kareela Road. Then message us through
+      the Airbnb app so we know what's happened and can help.</p>
+    </div>
+    <p class="bookmark-tip" style="margin-top:1.4rem;">For anything less urgent — a question, something
+    not quite right, or just to say hello — message us through the Airbnb app. We'd far rather hear
+    from you early than have you uncomfortable.</p>
+  </div>
+</section>
+
+<!-- ============ EXPLORE MORE / NAVIGATE TO SITE ============ -->
+<section class="section-pad cta">
+  <div class="wrap wrap--narrow reveal">
+    <p class="eyebrow">Curious about the area?</p>
+    <h2 class="h-display">Have a look around while you plan</h2>
+    <p>Local wineries and tables, walks and waterfalls, the wildlife you might meet, and what's on
+    while you're here — it's all on our website.</p>
+    <a class="btn btn--primary" href="area.html">Explore the area guides</a>
+    <a class="btn btn--ghost" href="index.html" style="margin-left:.6rem;">Back to the website</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="site-footer__grid">
+      <div>
+        <div class="site-footer__brand">The Burrows of Penrose</div>
+        <p>A private rural homestead in the Southern Highlands of New South Wales, near Bundanoon and Penrose.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="about.html">The Homestead</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="area.html">The Area</a></li>
+          <li><a href="book.html">Stay &amp; Book</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Local Guides</h4>
+        <ul>
+          <li><a href="guides/events.html">Events Calendar</a></li>
+          <li><a href="guides/food-and-drink.html">Wineries &amp; Tables</a></li>
+          <li><a href="guides/nature.html">Walks &amp; Lookouts</a></li>
+          <li><a href="guides/wildlife.html">Homestead Wildlife</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__base">
+      <span>© 2026 The Burrows of Penrose · Southern Highlands NSW</span>
+      <span>Made with care for our guests</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+</body>
+</html>
